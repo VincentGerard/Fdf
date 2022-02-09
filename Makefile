@@ -26,3 +26,5 @@ fclean: clean
 
 re: fclean app
 
+run: all
+	./app
