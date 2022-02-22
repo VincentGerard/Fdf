@@ -1,31 +1,37 @@
 .SILENT:
+NAME=fdf
 SRC_DIR:=./src
 OBJS_DIR:=./obj
-INCLUDE_DIR:=./include -I /usr/include/X11 -I mlx_linux
+INCLUDE:= -Wall -Werror -Wextra -I include -I /usr/include/X11 -I lib/mlx_linux -I lib/libft/include
 
 SRC:= $(shell find $(SRC_DIR) -wholename "$(SRC_DIR)*.c" -exec basename \{}  \; | xargs)
 
 OBJS:= $(SRC:.c=.o)
 
-all: app
+all: $(NAME) libft.a
 
 %.o: $(addprefix ../src/, $(basename %).c) 
 	echo Creating $@
-	cc -o $@ -c $(SRC_DIR)/$(basename $(@F)).c -Wall -Wextra  -I $(INCLUDE_DIR)
+	cc -o $@ -c $(SRC_DIR)/$(basename $(@F)).c $(INCLUDE)
 
-app: $(addprefix $(OBJS_DIR)/, $(OBJS))
-	echo App done!
-	gcc -o app $(addprefix $(OBJS_DIR)/, $(OBJS)) -I $(INCLUDE_DIR) -Wall  -Wextra -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+$(NAME): $(addprefix $(OBJS_DIR)/, $(OBJS)) libft.a
+	echo $(NAME) done!
+	gcc -o $(NAME) libft.a $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDE) -Llib/mlx_linux -L . -lft -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+
+libft.a:
+	cd lib/libft/ && $(MAKE)
+	cp lib/libft/libft.a .
+	echo Libft.a done!
 
 clean:
 	echo Cleaning done!
 	rm -rf $(OBJS_DIR)/* -f
 
 fclean: clean
-	rm app -f
+	rm fdf -f
 
-re: fclean app
+re: fclean fdf
 
 run: all
 	echo "Run=>"
-	./app
+	./fdf

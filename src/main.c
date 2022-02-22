@@ -1,20 +1,48 @@
 #include <mlx.h>
-#include "stdio.h"
+#include "fdf.h"
+#include "libft.h"
+#include <stdio.h>
 
-int	main(void)
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	void	*mlx;
-	void	*mlx_win;
+	char	*dst;
 
-	mlx = mlx_init();
-	if (!mlx)
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
+
+
+int	main(int argc, char const *argv[])
+{
+	// void	*mlx;
+	// void	*mlx_win;
+	// t_data	img;
+
+	// mlx = mlx_init();
+	// mlx_win = mlx_new_window(mlx, 200, 100, "Hello world!");
+	// img.img = mlx_new_image(mlx, 200, 100);
+	// img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+	// 							&img.endian);
+	// my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+	// mlx_put_image_to_window(mlx, mlx_win, img.img, 50, 50);
+	// mlx_loop(mlx);
+
+	(void)argv;
+	if (argc == 2)
+		get_next_line(4);
+	else 
 	{
-		printf("mlx = NULL\n");
-		exit(1);
+		printf("\n");
+		//ft_printf("Fdf needs 2 args!!!\n");
 	}
-	printf("Test1\n");
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	printf("Test1\n");
-	mlx_loop(mlx);
-	printf("Test1\n");
+	return (0);
 }
