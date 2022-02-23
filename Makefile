@@ -10,7 +10,7 @@ OBJS:= $(SRC:.c=.o)
 
 all: $(NAME) libft.a
 
-%.o: $(addprefix ../src/, $(basename %).c) 
+%.o: $(addprefix ../src/, $(basename %).c)
 	echo Creating $@
 	cc -o $@ -c $(SRC_DIR)/$(basename $(@F)).c $(INCLUDE)
 
@@ -34,4 +34,4 @@ re: fclean fdf
 
 run: all
 	echo "Run=>"
-	./fdf
+	./fdf maps/test_maps/42.fdf

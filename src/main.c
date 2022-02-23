@@ -38,11 +38,11 @@ int	main(int argc, char const *argv[])
 
 	(void)argv;
 	if (argc == 2)
-		get_next_line(4);
+		fdf(argv[1]);
 	else 
 	{
 		printf("\n");
-		//ft_printf("Fdf needs 2 args!!!\n");
+		ft_printf("Fdf needs 2 args!!!\n");
 	}
 	return (0);
 }

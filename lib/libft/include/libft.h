@@ -55,6 +55,7 @@ char			*ft_substr(char const *str, unsigned int start, size_t n);
 char			*ft_strjoin(char const *str1, const char *str2);
 char			*ft_strtrim(char const *str, const char *set);
 char			**ft_split(char const *str, char separator);
+int				ft_nbr_words(const char *str, char separator);
 char			*ft_itoa(int number);
 char			*ft_strmapi(char const *str, char (*f)(unsigned int, char));
 void			ft_striteri(char *str, void (*f)(unsigned int, char *));
