@@ -37,23 +37,25 @@ int	fdf(const char *filename)
 		}
 		y++;
 	}
-	ft_printf("Ok\n");
-	int k = 0;
-	for (unsigned int y = 0; y < height; y++)
-	{
-		for(unsigned int x = 0; x < width; x++)
-		{
-			//ft_printf("K=%dX=%dY=%d\n",k, x ,y);
-			map[y][x] = k;
-			k++;
-		}
-	}
-	// if (fdf_load_map(map, filename, height, width))
+	// ft_printf("Ok\n");
+	// int k = 0;
+	// for (unsigned int y = 0; y < height; y++)
 	// {
-	// 	ft_printf("[Fdf]Error while loading map!\n");
-	// 	free(map);
-	// 	return (1);
+	// 	for(unsigned int x = 0; x < width; x++)
+	// 	{
+	// 		//ft_printf("K=%dX=%dY=%d\n",k, x ,y);
+	// 		map[y][x] = k;
+	// 		k++;
+	// 	}
 	// }
+
+	
+	if (fdf_load_map(map, filename, height, width))
+	{
+		ft_printf("[Fdf]Error while loading map!\n");
+		free(map);
+		return (1);
+	}
 
 	for (unsigned int y = 0; y < height; y++)
 	{

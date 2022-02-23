@@ -23,22 +23,33 @@ int	fdf_get_map_size(const char *filename, unsigned int *height, unsigned int *w
 
 int	fdf_load_map(int **map, const char* filename, unsigned int height, unsigned int width)
 {
-	(void)map;
-	(void)filename;
 	(void)height;
 	(void)width;
-	// int		fd;
-	// char	*str;
-	// char	**temp;
+	int		fd;
+	char	*str;
+	char	**temp;
+	int		x;
+	int		y;
 
-	// fd = open(filename, O_RDONLY);
-	// if (fd == 0)
-	// 	return (1);
-	// str = get_next_line(fd);
-	// while (str != NULL)
-	// {
-	// 	temp = ft_split(str, ' ');
-	// }
-	// close(fd);
+	fd = open(filename, O_RDONLY);
+	if (fd == 0)
+		return (1);
+	str = get_next_line(fd);
+	x = 0;
+	y = 0;
+	while (str != NULL)
+	{
+		temp = ft_split(str, ' ');
+		x = 0;
+		while (*temp)
+		{
+			map[y][x] = ft_atoi(*temp);
+			x++;
+			*temp = temp[x];
+		}
+		str = get_next_line(fd);
+		y++;
+	}
+	close(fd);
 	return (0);
 }
