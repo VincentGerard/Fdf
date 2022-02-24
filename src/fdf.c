@@ -6,64 +6,36 @@ int	fdf(const char *filename)
 	unsigned int	height;
 	unsigned int	width;
 	int				**map;
-	unsigned int	y;
 
 	height = 0;
 	width = 0;
-	ft_printf("[Fdf]Filename=%s\n", filename);
+	//ft_printf("[Fdf]Filename=%s\n", filename);
 
-	if (fdf_get_map_size(filename, &height, &width))
+	if (fdf_get_map_size(filename, &width, &height))
 	{
 		ft_printf("[Fdf]Error while loading map size!\n");
 		return (1);
 	}
-	ft_printf("[Fdf]Height=%d\n[Fdf]Width=%d\n", height, width);
+	ft_printf("[Fdf]Width=%d\n[Fdf]Height=%d\n", width, height);
 
-	//Alloc map
-	map = (int **)malloc(sizeof(int*) * height);
+	map = fdf_alloc_map(width, height);
 	if (map == NULL)
 	{
-		ft_printf("[Fdf]Error of malloc on map with height=%d, width=%d\n", height, width);
+		ft_printf("[Fdf]Error on Fdf_Alloc_Map\n");
 		return (1);
 	}
-	y = 0;
-	while (y < width)
-	{
-		map[y] = (int*)malloc(sizeof(int) * width);
-		if (map[y] == NULL)
-		{
-			ft_printf("[Fdf]Error of malloc on map[y=%d]\n", y);
-			return (1);
-		}
-		y++;
-	}
-	// ft_printf("Ok\n");
-	// int k = 0;
-	// for (unsigned int y = 0; y < height; y++)
-	// {
-	// 	for(unsigned int x = 0; x < width; x++)
-	// 	{
-	// 		//ft_printf("K=%dX=%dY=%d\n",k, x ,y);
-	// 		map[y][x] = k;
-	// 		k++;
-	// 	}
-	// }
 
-	
-	if (fdf_load_map(map, filename, height, width))
+	fdf_init_map(map, width, height, 0);
+	if (fdf_load_map(map, filename))
 	{
 		ft_printf("[Fdf]Error while loading map!\n");
-		free(map);
+		fdf_free_map(map, height);
 		return (1);
 	}
 
-	for (unsigned int y = 0; y < height; y++)
-	{
-		for(unsigned int x = 0; x < width; x++)
-		{
-			ft_printf("%d ", map[y][x]);
-		}
-		ft_printf("\n");
-	}
+	fdf_show_map(map, width, height);
+
+	fdf_free_map(map,height);
+	
 	return (0);
 }

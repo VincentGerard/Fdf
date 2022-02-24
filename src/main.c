@@ -41,8 +41,14 @@ int	main(int argc, char const *argv[])
 		fdf(argv[1]);
 	else 
 	{
-		printf("\n");
 		ft_printf("Fdf needs 2 args!!!\n");
+		char **res = NULL;
+		res = ft_split("Coucou test 2 1 3 5 4 56 ", ' ');
+		for(int i = 0; i < 8; i++)
+		{
+			free(res[i]);
+		}
+		free(res);
 	}
 	return (0);
 }

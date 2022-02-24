@@ -2,7 +2,7 @@
 NAME=fdf
 SRC_DIR:=./src
 OBJS_DIR:=./obj
-INCLUDE:= -Wall -Werror -Wextra -I include -I /usr/include/X11 -I lib/mlx_linux -I lib/libft/include
+INCLUDE:= -I include -I /usr/include/X11 -I lib/mlx_linux -I lib/libft/include
 
 SRC:= $(shell find $(SRC_DIR) -wholename "$(SRC_DIR)*.c" -exec basename \{}  \; | xargs)
 
@@ -29,9 +29,13 @@ clean:
 
 fclean: clean
 	rm fdf -f
+	rm libft.a
 
 re: fclean fdf
 
 run: all
 	echo "Run=>"
 	./fdf maps/test_maps/42.fdf
+
+leak: all
+	valgrind --track-origins=yes --leak-check=yes ./fdf maps/test_maps/42.fdf
