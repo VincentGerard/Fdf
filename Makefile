@@ -29,7 +29,7 @@ clean:
 
 fclean: clean
 	rm fdf -f
-	rm libft.a
+	rm libft.a -f
 
 re: fclean fdf
 

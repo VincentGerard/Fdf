@@ -1,4 +1,4 @@
-#include "fdf_utils.h"
+#include "fdfMapUtils.h"
 
 int	fdf_get_map_size(const char *filename, unsigned int *width, unsigned int *height)
 {
@@ -123,8 +123,16 @@ void	fdf_show_map(int **map, unsigned int width, unsigned int height)
 	{
 		for(unsigned int x = 0; x < width; x++)
 		{
-			ft_printf("%d ", map[y][x]);
+			#ifdef _STDIO_H
+				printf("%2d ", map[y][x]);
+			#else
+				ft_printf("%d ", map[y][x]);
+			#endif
 		}
-		ft_printf("\n");
+		#ifdef _STDIO_H
+			printf("\n");
+		#else
+			ft_printf("\n");
+		#endif
 	}
 }

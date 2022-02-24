@@ -2,7 +2,9 @@
 #define FDF_H
 
 #include "libft.h"
-#include "fdf_utils.h"
+#include "fdfMapUtils.h"
+#include "fdfMlx.h"
+#include <stdio.h>
 
 int	fdf(const char *filename);
 

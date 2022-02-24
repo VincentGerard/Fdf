@@ -9,7 +9,6 @@ int	fdf(const char *filename)
 
 	height = 0;
 	width = 0;
-	//ft_printf("[Fdf]Filename=%s\n", filename);
 
 	if (fdf_get_map_size(filename, &width, &height))
 	{
@@ -26,6 +25,7 @@ int	fdf(const char *filename)
 	}
 
 	fdf_init_map(map, width, height, 0);
+
 	if (fdf_load_map(map, filename))
 	{
 		ft_printf("[Fdf]Error while loading map!\n");
@@ -34,6 +34,8 @@ int	fdf(const char *filename)
 	}
 
 	fdf_show_map(map, width, height);
+
+	fdf_display_map(map, width, height);
 
 	fdf_free_map(map,height);
 	

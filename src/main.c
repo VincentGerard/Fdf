@@ -38,17 +38,14 @@ int	main(int argc, char const *argv[])
 
 	(void)argv;
 	if (argc == 2)
-		fdf(argv[1]);
-	else 
 	{
-		ft_printf("Fdf needs 2 args!!!\n");
-		char **res = NULL;
-		res = ft_split("Coucou test 2 1 3 5 4 56 ", ' ');
-		for(int i = 0; i < 8; i++)
+		if (fdf(argv[1]))
 		{
-			free(res[i]);
+			ft_printf("[Main]Error in fdf!");
+			exit(1);
 		}
-		free(res);
 	}
+	else 
+		ft_printf("Fdf needs 2 args!!!\n");
 	return (0);
 }
