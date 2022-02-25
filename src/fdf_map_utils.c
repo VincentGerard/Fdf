@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:01:10 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 15:30:14 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/25 17:21:33 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int	fdf_load_map(int **map, const char *filename)
 {
 	int		fd;
 	char	*str;
-	char	**temp;
-	int		x;
 	int		y;
 
 	fd = open(filename, O_RDONLY);
@@ -105,8 +103,8 @@ void	fdf_free_map(int **map, unsigned int height)
 
 void	fdf_show_map(int **map, unsigned int width, unsigned int height)
 {
-	int	x;
-	int	y;
+	unsigned int	x;
+	unsigned int	y;
 
 	y = 0;
 	while (y < height)
