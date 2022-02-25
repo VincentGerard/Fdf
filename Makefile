@@ -26,11 +26,11 @@ libft.a:
 
 clean:
 	echo Cleaning done!
-	rm -rf $(OBJS_DIR)/* -f
+	rm -rf $(OBJS_DIR)/*
 
 fclean: clean
-	rm fdf -f
-	rm libft.a -f
+	rm -f fdf
+	rm -f libft.a
 
 re: fclean fdf
 
