@@ -2,6 +2,7 @@
 NAME=fdf
 SRC_DIR:=./src
 OBJS_DIR:=./obj
+INCLUDE_DIR:=./include
 INCLUDE:= -I include -I /usr/include/X11 -I lib/mlx_linux -I lib/libft/include
 
 SRC:= $(shell find $(SRC_DIR) -wholename "$(SRC_DIR)*.c" -exec basename \{}  \; | xargs)
@@ -39,3 +40,6 @@ run: all
 
 leak: all
 	valgrind --track-origins=yes --leak-check=yes ./fdf maps/test_maps/42.fdf
+
+norme:
+	norminette $(SRC_DIR) $(INCLUDE_DIR)

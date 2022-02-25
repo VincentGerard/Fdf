@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf_map_utils_2.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 03:42:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 03:42:03 by vgerard          ###   ########.fr       */
+/*   Created: 2022/02/25 03:24:16 by vgerard           #+#    #+#             */
+/*   Updated: 2022/02/25 03:34:03 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "fdf.h"
-#include "libft.h"
-#include <stdio.h>
-#include <errno.h>
-#include <string.h>
+#ifndef FDF_MAP_UTILS_2_H
+# define FDF_MAP_UTILS_2_H
 
-int	main(int argc, char const *argv[])
-{
-	(void)argv;
-	if (argc == 2)
-	{
-		if (fdf(argv[1]))
-		{
-			ft_printf("[Main]Error in fdf!");
-			exit(1);
-		}
-	}
-	else
-	{
-		ft_printf("Fdf needs 2 args!!!\n");
-	}
-	return (0);
-}
+# include "fdf_map_utils.h"
+
+int	fdf_fill_map_row(int **map, char *str, int row);
+
+#endif

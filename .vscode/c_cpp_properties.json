@@ -6,7 +6,7 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/lib/libft/include",
                 "${workspaceFolder}/include",
-                "${workspaceFolder}/include"
+				"/usr/include/X11"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

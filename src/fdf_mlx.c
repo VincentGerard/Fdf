@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf_mlx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 03:42:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 03:42:03 by vgerard          ###   ########.fr       */
+/*   Created: 2022/02/25 03:39:03 by vgerard           #+#    #+#             */
+/*   Updated: 2022/02/25 03:39:45 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "fdf.h"
-#include "libft.h"
-#include <stdio.h>
-#include <errno.h>
-#include <string.h>
+#include "fdf_mlx.h"
 
-int	main(int argc, char const *argv[])
+int	fdf_display_map(int **map, unsigned int width, unsigned int height)
 {
-	(void)argv;
-	if (argc == 2)
-	{
-		if (fdf(argv[1]))
-		{
-			ft_printf("[Main]Error in fdf!");
-			exit(1);
-		}
-	}
-	else
-	{
-		ft_printf("Fdf needs 2 args!!!\n");
-	}
 	return (0);
 }

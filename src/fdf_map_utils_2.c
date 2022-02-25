@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf_map_utils_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 03:42:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 03:42:03 by vgerard          ###   ########.fr       */
+/*   Created: 2022/02/25 03:24:27 by vgerard           #+#    #+#             */
+/*   Updated: 2022/02/25 03:34:34 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "fdf.h"
-#include "libft.h"
-#include <stdio.h>
-#include <errno.h>
-#include <string.h>
+#include "fdf_map_utils_2.h"
 
-int	main(int argc, char const *argv[])
+int	fdf_fill_map_row(int **map, char *str, int row)
 {
-	(void)argv;
-	if (argc == 2)
+	char	**temp;
+	int		x;
+
+	temp = ft_split(str, ' ');
+	if (temp == NULL)
 	{
-		if (fdf(argv[1]))
-		{
-			ft_printf("[Main]Error in fdf!");
-			exit(1);
-		}
+		ft_printf("[Fdf_Fill_Map_Row]Split error\n");
+		return (1);
 	}
-	else
+	x = 0;
+	while (temp[x] != NULL)
 	{
-		ft_printf("Fdf needs 2 args!!!\n");
+		map[row][x] = ft_atoi(temp[x]);
+		free(temp[x]);
+		x++;
 	}
+	free(temp);
 	return (0);
 }
