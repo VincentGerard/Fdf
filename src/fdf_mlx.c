@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:39:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 14:51:20 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/25 15:30:32 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	fdf_mlx(t_map_data *data)
 {
-	//data->mlx = mlx_init();
-	//data->c_image = mlx_new_window(data->mlx, data->w_width,
-			//data->w_height, data->w_name);
+	data->mlx = mlx_init();
+	data->c_image = mlx_new_window(data->mlx, data->w_width,
+			data->w_height, data->w_name);
 	//data->c_image = mlx_new_image(data->mlx, data->w_width, data->w_height);
 	//data->c_image->address = mlx_get_data_addr(data->mlx,
 			//&(data->c_image->bits_per_pixel), &(data->c_image->line_length),

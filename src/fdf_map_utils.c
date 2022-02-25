@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:01:10 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 03:34:50 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/25 15:30:14 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ unsigned int *width, unsigned int *height)
 	}
 	str = get_next_line(fd);
 	*width = ft_nbr_words(str, ' ');
-	while (1)
+	while (str != NULL)
 	{
-		if (str == NULL)
-			break ;
 		free(str);
 		str = get_next_line(fd);
 		*height = *height + 1;

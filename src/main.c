@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:42:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 14:40:17 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/25 15:09:33 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(int argc, char const *argv[])
 	else
 	{
 		ft_printf("Fdf needs 2 args!!!\n");
-		char **temp = ft_split("Coucou test", ' ');
 	}
 	return (0);
 }

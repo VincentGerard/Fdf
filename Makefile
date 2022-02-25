@@ -17,7 +17,8 @@ all: $(NAME) libft.a
 
 $(NAME): $(addprefix $(OBJS_DIR)/, $(OBJS)) libft.a
 	echo $(NAME) done!
-	gcc -o $(NAME) libft.a $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDE) -Llib/mlx_linux -L . -lft -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+	#gcc -o $(NAME) libft.a $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDE) -Llib/mlx_linux -L . -lft -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+	gcc -o $(NAME) libft.a $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDE) -Llib/mlx_linux -L . -lft -L/usr/lib -lmlx -framework OpenGL -framework Appkit
 
 libft.a:
 	cd lib/libft/ && $(MAKE)
