@@ -32,6 +32,7 @@ libft.a:
 clean:
 	echo Cleaning done!
 	rm -rf $(OBJS_DIR)/*
+	rm -rf *.dSYM
 
 fclean: clean
 	rm -f fdf
