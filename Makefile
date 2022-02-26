@@ -3,7 +3,7 @@ NAME=fdf
 SRC_DIR:=./src
 OBJS_DIR:=./obj
 INCLUDE_DIR:=./include
-INCLUDE:= -Wall -Werror -Wextra -I include -I /usr/include/X11 -I lib/mlx_linux -I lib/libft/include
+INCLUDE:=  -I include -I /usr/include/X11 -I lib/mlx_linux -I lib/libft/include
 OS:= $(shell uname)
 
 SRC:= $(shell find $(SRC_DIR) -wholename "$(SRC_DIR)*.c" -exec basename \{}  \; | xargs)
@@ -23,6 +23,7 @@ ifeq ($(OS), Linux)
 else
 	gcc -o $(NAME) libft.a $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDE) -Llib/mlx_linux -L . -lft -L/usr/lib -lmlx -framework OpenGL -framework Appkit
 endif
+
 
 libft.a:
 	cd lib/libft/ && $(MAKE)
@@ -45,7 +46,7 @@ run: all
 	./fdf maps/test_maps/42.fdf
 
 leak: all
-	valgrind --track-origins=yes --leak-check=yes ./fdf maps/test_maps/42.fdf
+	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all ./fdf maps/test_maps/42.fdf
 
 norme:
 	norminette $(SRC_DIR) $(INCLUDE_DIR)

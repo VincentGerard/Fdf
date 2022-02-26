@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:36:16 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 17:13:51 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/27 00:42:44 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	fdf(const char *filename)
 		return (1);
 	}
 	fdf_show_map(map_data.map, map_data.width, map_data.height);
-	if (fdf_mlx(&map_data))
-		return (1);
-	fdf_free_map(map_data.map, map_data.height);
+	fdf_mlx(&map_data);
 	return (0);
 }

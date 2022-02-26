@@ -6,13 +6,14 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:39:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 17:09:34 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/27 00:43:04 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_mlx.h"
+#include "fdf_hook.h"
 
-int	fdf_mlx(t_map_data *d)
+void	fdf_mlx(t_map_data *d)
 {
 	d->mlx = mlx_init();
 	d->mlx_win = mlx_new_window(d->mlx, d->w_width,
@@ -32,8 +33,8 @@ int	fdf_mlx(t_map_data *d)
 			&(d->c_image->endian));
 	fdf_mlx_set_pixel(d->c_image, 5, 5, fdf_get_hex_color(0, 0, 0, 255));
 	mlx_put_image_to_window(d->mlx, d->mlx_win, d->c_image->image, 0, 0);
+	fdf_hook_all(d);
 	mlx_loop(d->mlx);
-	return (0);
 }
 
 void	fdf_mlx_set_pixel(t_image *data, int x, int y, int color)

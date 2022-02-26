@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:01:10 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 17:21:33 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/26 23:45:54 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ unsigned int *width, unsigned int *height)
 	int		fd;
 	char	*str;
 
+	fd = 0;
 	fd = open(filename, O_RDONLY);
-	if (fd == 0)
+	if (fd <= 0)
 	{
 		ft_printf("[Fdf_Get_Map_Size]Error while opening file %s!\n", filename);
 		return (1);
