@@ -1,6 +1,7 @@
 #include "fdf_hook.h"
 #include "fdf_events.h"
 #include "libft.h"
+#include "fdf_enums.h"
 
 int	fdf_hook_all(t_map_data *data)
 {

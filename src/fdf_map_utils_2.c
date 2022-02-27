@@ -6,11 +6,12 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:24:27 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/27 00:51:28 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/27 02:40:33 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_map_utils_2.h"
+#include "fdf_enums.h"
 
 int	fdf_fill_map_row(int **map, char *str, int row)
 {
@@ -53,13 +54,21 @@ int	fdf_get_hex_color(int transparence, int r, int g, int b)
 	return (transparence << 24 | r << 16 | g << 8 | b);
 }
 
-void fdf_free_and_exit(t_map_data *data)
+void fdf_free_and_exit(t_map_data *data, EXIT_CODE code)
 {
-	fdf_free_map(data->map, data->height);
-	mlx_destroy_image(data->mlx, data->c_image->image);
-	mlx_destroy_display(data->mlx);
-	mlx_destroy_window(data->mlx, data->mlx_win);
-	free(data->c_image);
-	free(data->mlx);
-	exit(0);
+	if (code == EXIT_CODE_MALLOC_FAIL)
+	{
+		fdf_free_map(data->map, data->height);
+		exit(code);
+	}
+	else if (code == EXIT_CODE_NORMAL)
+	{
+		fdf_free_map(data->map, data->height);
+		mlx_destroy_image(data->mlx, data->c_image->image);
+		mlx_destroy_display(data->mlx);
+		mlx_destroy_window(data->mlx, data->mlx_win);
+		free(data->c_image);
+		free(data->mlx);
+		exit(0);
+	}
 }
