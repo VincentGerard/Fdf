@@ -6,12 +6,16 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:24:27 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/27 02:40:33 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/28 03:45:00 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "fdf.h"
+#include "mlx.h"
 #include "fdf_map_utils_2.h"
-#include "fdf_enums.h"
+#include "fdf_map_utils.h"
+#include <math.h>
 
 int	fdf_fill_map_row(int **map, char *str, int row)
 {
@@ -38,8 +42,8 @@ int	fdf_fill_map_row(int **map, char *str, int row)
 void	fdf_init_empty_map_data(t_map_data *data)
 {
 	data->map = NULL;
-	data->width = 0;
-	data->height = 0;
+	data->m_width = 0;
+	data->m_height = 0;
 	data->mlx = NULL;
 	data->mlx_win = NULL;
 	data->c_image = NULL;
@@ -58,12 +62,12 @@ void fdf_free_and_exit(t_map_data *data, EXIT_CODE code)
 {
 	if (code == EXIT_CODE_MALLOC_FAIL)
 	{
-		fdf_free_map(data->map, data->height);
+		fdf_free_map(data->map, data->m_height);
 		exit(code);
 	}
 	else if (code == EXIT_CODE_NORMAL)
 	{
-		fdf_free_map(data->map, data->height);
+		fdf_free_map(data->map, data->m_height);
 		mlx_destroy_image(data->mlx, data->c_image->image);
 		mlx_destroy_display(data->mlx);
 		mlx_destroy_window(data->mlx, data->mlx_win);
@@ -71,4 +75,9 @@ void fdf_free_and_exit(t_map_data *data, EXIT_CODE code)
 		free(data->mlx);
 		exit(0);
 	}
+}
+
+double	fdf_degree_to_radian(double degree)
+{
+	return (degree * (M_PI / 180.0));	
 }

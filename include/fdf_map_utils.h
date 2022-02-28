@@ -6,16 +6,12 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:04:04 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/25 03:41:17 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/27 16:57:24 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_MAP_UTILS_H
 # define FDF_MAP_UTILS_H
-
-# include "fcntl.h"
-# include "fdf.h"
-# include "fdf_map_utils_2.h"
 
 //Open's file and gets maps width and height
 int		fdf_get_map_size(const char *filename,

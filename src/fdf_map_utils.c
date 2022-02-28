@@ -6,11 +6,15 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:01:10 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/26 23:45:54 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/02/27 16:59:42 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
+#include "libft.h"
+#include "fdf.h"
 #include "fdf_map_utils.h"
+#include "fdf_map_utils_2.h"
 
 int	fdf_get_map_size(const char *filename,
 unsigned int *width, unsigned int *height)
