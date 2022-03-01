@@ -17,7 +17,6 @@
 #include "fdf_map_utils.h"
 #include "fdf_map_utils_2.h"
 #include "mlx.h"
-#include "mlx_int.h"
 #include "fdf_image.h"
  
 int	fdf_event_on_destroy(void *param)

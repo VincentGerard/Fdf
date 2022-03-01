@@ -49,51 +49,33 @@ void	fdf_draw_lines(t_map_data *data)
 	}
 
 	//Right
-	x = data->w_width / 2;
-	y = data->w_height / 2;
+	x = 0;
+	y = 0;
 	z = 0;
 	angle = 60;
-	while ((int)x / tan(fdf_degree_to_radian(angle)) < data->w_height)
+	while ((int)((x) / tan(fdf_degree_to_radian(angle)) + data->w_height / 2) < data->w_height)
 	{
-		//Calculate new x and y
-		printf("X=%dY=%d\n", x, y);
-		printf("X=%dY=%d\n", x, (int)(x / tan(fdf_degree_to_radian(angle))));
-		fdf_mlx_set_pixel(data->c_image, x , (int)((x) / tan(fdf_degree_to_radian(angle))), fdf_get_hex_color(0, 0, 0, 255));
+		fdf_mlx_set_pixel(data->c_image, x + data->w_width / 2, (int)((x) / tan(fdf_degree_to_radian(angle)) + data->w_height / 2), fdf_get_hex_color(0, 0, 0, 255));
 		x++;
 		y++;
 	}
 
-	x = data->w_width / 2;
-	y = data->w_height / 2;
-	z = 1;
+	//Left
+	x = 0;
+	y = 0;
+	z = 0;
 	angle = 60;
-	while ((int)(x + cos(fdf_degree_to_radian(angle)) * z) < data->w_width &&  y + sin(fdf_degree_to_radian(angle)) * z < data->w_height)
+	while ((int)((x) / tan(fdf_degree_to_radian(angle)) + data->w_height / 2) < data->w_height)
 	{
 		//Calculate new x and y
-		printf("Coucou\n");
 		printf("X=%dY=%d\n", x, y);
-		printf("Angle=%lf\n" , cos(fdf_degree_to_radian(angle)));
-		printf("X=%dY=%d\n", (int)(x + cos(fdf_degree_to_radian(angle)) * z),  (int)(y + sin(fdf_degree_to_radian(angle)) * z));
-		fdf_mlx_set_pixel(data->c_image, x + cos(fdf_degree_to_radian(angle)) * z, y + sin(fdf_degree_to_radian(angle)) * z, fdf_get_hex_color(0, 0, 255, 0));
+		printf("X=%dY=%d\n", x + data->w_width / 2, (int)(x / tan(fdf_degree_to_radian(angle)) + data->w_height / 2));
+		fdf_mlx_set_pixel(data->c_image, (x + data->w_width / 2) * -1, (int)((x) / tan(fdf_degree_to_radian(angle)) + data->w_height / 2), fdf_get_hex_color(0, 0, 0, 255));
 		x++;
 		y++;
 	}
 
-	x = data->w_width / 2;
-	y = data->w_height / 2;
-	z = 1;
-	angle = 60;
-	while (x < data->w_width &&  y * (3.0 / 10.0) < data->w_height)
-	{
-		//Calculate new x and y
-		printf("Coucou\n");
-		printf("X=%dY=%d\n", x, y);
-		printf("Angle=%lf\n" , cos(fdf_degree_to_radian(angle)));
-		printf("X=%dY=%lf\n", x, y * (3.0 / 10.0));
-		fdf_mlx_set_pixel(data->c_image, x, y * (3.0 / 10.0), fdf_get_hex_color(0, 255, 0, 0));
-		x++;
-		y++;
-	}
+	
 
 
 

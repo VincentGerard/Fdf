@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:39:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/28 03:26:42 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/01 11:15:16 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ void	fdf_mlx(t_map_data *d)
 void	fdf_mlx_set_pixel(t_image *data, int x, int y, int color)
 {
 	char	*dst;
+	printf("[Pixel]X=%dY=%d\n", x , y);
 	dst = data->address + (y * data->line_length + x
 			* (data->bits_per_pixel / 8));
 			
 	*(unsigned int *)dst = color;
+	printf("[Pixel]X=%dY=%d\n", x , y);
 }
