@@ -3,7 +3,7 @@ NAME=fdf
 SRC_DIR:=./src
 OBJS_DIR:=./obj
 INCLUDE_DIR:=./include
-INCLUDE:=  -I include -I /usr/include/X11 -I lib/mlx_linux -I lib/libft/include
+INCLUDE:= -Wall -Wextra -Werror -I include -I /usr/include/X11 -I lib/mlx_linux -I lib/libft/include
 OS:= $(shell uname)
 
 SRC:= $(shell find $(SRC_DIR) -wholename "$(SRC_DIR)*.c" -exec basename \{}  \; | xargs)

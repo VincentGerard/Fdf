@@ -6,14 +6,14 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:06:34 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/28 02:19:47 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/06 18:40:13 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-#include "stdio.h"
+# include "stdio.h"
 
 typedef struct s_image
 {
@@ -38,25 +38,25 @@ typedef struct s_map_data
 	char			*w_name;
 }					t_map_data;
 
-typedef enum 
+typedef enum MLX_EVENT
 {
 	MLX_EVENT_KEYDOWN = 2,
 	MLX_EVENT_KEYUP = 3,
 	MLX_EVENT_EXPOSE = 12,
 	MLX_EVENT_DESTROY = 17,
 	MLX_EVENT_RESIZE = 22,
-} MLX_EVENT;
+}	t_MLX_EVENT;
 
-typedef enum 
+typedef enum KEYS
 {
 	KEY_ESCAPE = 65307,
-} KEYS;
+}	t_KEYS;
 
-typedef enum 
+typedef enum EXIT_CODE
 {
 	EXIT_CODE_NORMAL = 0,
 	EXIT_CODE_MALLOC_FAIL = 1,
-} EXIT_CODE;
+}	t_EXIT_CODE;
 
 int	fdf(const char *filename);
 

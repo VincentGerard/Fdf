@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:24:27 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/01 10:48:41 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/06 18:45:51 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	fdf_get_hex_color(int transparence, int r, int g, int b)
 	return (transparence << 24 | r << 16 | g << 8 | b);
 }
 
-void fdf_free_and_exit(t_map_data *data, EXIT_CODE code)
+void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 {
 	if (code == EXIT_CODE_MALLOC_FAIL)
 	{
@@ -69,7 +69,6 @@ void fdf_free_and_exit(t_map_data *data, EXIT_CODE code)
 	{
 		fdf_free_map(data->map, data->m_height);
 		mlx_destroy_image(data->mlx, data->c_image->image);
-		//mlx_destroy_display(data->mlx);
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		free(data->c_image);
 		free(data->mlx);
@@ -79,5 +78,5 @@ void fdf_free_and_exit(t_map_data *data, EXIT_CODE code)
 
 double	fdf_degree_to_radian(double degree)
 {
-	return (degree * (M_PI / 180.0));	
+	return (degree * (M_PI / 180.0));
 }

@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #ifndef FDF_IMAGE_H
-#define FDF_IMAGE_H
-
-#include "fdf.h"
+# define FDF_IMAGE_H
+# include "fdf.h"
 
 void	fdf_put_image(t_map_data *data);
 

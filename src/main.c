@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:42:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/27 00:14:41 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/06 18:40:24 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(int argc, char const *argv[])
 	}
 	else
 	{
-		
 		ft_printf("Fdf needs 2 args!!!\n");
 	}
 	return (0);

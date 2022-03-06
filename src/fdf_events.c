@@ -18,7 +18,7 @@
 #include "fdf_map_utils_2.h"
 #include "mlx.h"
 #include "fdf_image.h"
- 
+
 int	fdf_event_on_destroy(void *param)
 {
 	if (param != NULL)
@@ -29,20 +29,7 @@ int	fdf_event_on_destroy(void *param)
 int	fdf_event_on_expose(void *param)
 {
 	ft_printf("[Fdf_Event_On_Expose]\n");
-	return (0);
-}
-
-int	fdf_event_on_resize(void *param)
-{
-	ft_printf("[Fdf_Event_On_Resize]\n");
-	t_map_data *data = (t_map_data *)param;
-	//fdf_put_image(data);
-	return (0);
-}
-
-int	fdf_event_on_all(void *param)
-{
-	ft_printf("[Fdf_Event_On_All]\n");
+	fdf_put_image((t_map_data *)param);
 	return (0);
 }
 
