@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:39:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/06 18:43:05 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/08 19:04:29 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,14 @@ void	fdf_mlx(t_map_data *d)
 	mlx_loop(d->mlx);
 }
 
-void	fdf_mlx_set_pixel(t_image *data, int x, int y, int color)
+void	fdf_mlx_set_pixel(t_map_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->address + (y * data->line_length + x
-			* (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	if (x < data->w_width && y < data->w_height && x >= 0 && y >= 0)
+	{
+		dst = data->c_image->address + (y * data->c_image->line_length + x
+				* (data->c_image->bits_per_pixel / 8));
+		*(unsigned int *)dst = color;
+	}
 }

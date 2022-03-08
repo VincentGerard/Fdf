@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:39:24 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/06 18:38:13 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/06 19:59:36 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 void	fdf_mlx(t_map_data *map_data);
 
 //Prints single pixel to map
-void	fdf_mlx_set_pixel(t_image *data, int x, int y, int color);
+void	fdf_mlx_set_pixel(t_map_data *data, int x, int y, int color);
 
 #endif

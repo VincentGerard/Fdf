@@ -20,4 +20,6 @@ void	fdf_draw_image(t_map_data *data);
 
 void	fdf_draw_lines(t_map_data *data);
 
+void	fdf_draw_map(t_map_data *data);
+
 #endif
