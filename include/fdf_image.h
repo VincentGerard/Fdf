@@ -22,4 +22,9 @@ void	fdf_draw_lines(t_map_data *data);
 
 void	fdf_draw_map(t_map_data *data);
 
+void	fdf_mlx_connect_points(t_map_data *data, t_point s1, t_point s2);
+
+void	fdf_draw_map_lines(t_map_data *data);
+
+
 #endif

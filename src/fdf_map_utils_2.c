@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:24:27 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/06 18:45:51 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/14 16:23:37 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "fdf_map_utils_2.h"
 #include "fdf_map_utils.h"
 #include <math.h>
+#include <unistd.h>
 
 int	fdf_fill_map_row(int **map, char *str, int row)
 {
@@ -42,12 +43,12 @@ int	fdf_fill_map_row(int **map, char *str, int row)
 void	fdf_init_empty_map_data(t_map_data *data)
 {
 	data->map = NULL;
+	data->p_map = NULL;
 	data->m_width = 0;
 	data->m_height = 0;
 	data->mlx = NULL;
 	data->mlx_win = NULL;
 	data->c_image = NULL;
-	data->n_image = NULL;
 	data->w_width = 720;
 	data->w_height = 360;
 	data->w_name = "Fdf";
@@ -63,6 +64,7 @@ void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 	if (code == EXIT_CODE_MALLOC_FAIL)
 	{
 		fdf_free_map(data->map, data->m_height);
+		system("leaks fdf");
 		exit(code);
 	}
 	else if (code == EXIT_CODE_NORMAL)
@@ -72,6 +74,7 @@ void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		free(data->c_image);
 		free(data->mlx);
+		system("leaks fdf");
 		exit(0);
 	}
 }

@@ -1,4 +1,4 @@
-.SILENT:
+#.SILENT:
 NAME=fdf
 SRC_DIR:=./src
 OBJS_DIR:=./obj
@@ -19,9 +19,9 @@ all: $(NAME) libft.a
 $(NAME): $(addprefix $(OBJS_DIR)/, $(OBJS)) libft.a
 	echo $(NAME) done!
 ifeq ($(OS), Linux)
-	gcc -o $(NAME) libft.a $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDE) -Llib/mlx_linux -L . -lft -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+	gcc -o $(NAME) libft.a $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDE) -Llib/mlx_linux -L . -lft -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -fsanitize=address
 else
-	gcc -o $(NAME) libft.a $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDE) -Llib/mlx_linux -L . -lft -L/usr/lib -lmlx -framework OpenGL -framework Appkit
+	gcc -o $(NAME) libft.a $(addprefix $(OBJS_DIR)/, $(OBJS)) $(INCLUDE) -Llib/mlx_linux -L . -lft -L/usr/lib -lmlx -framework OpenGL -framework Appkit -fsanitize=address
 endif
 
 

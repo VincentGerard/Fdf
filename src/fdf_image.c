@@ -73,43 +73,41 @@ void	fdf_draw_lines(t_map_data *data)
 
 void	fdf_draw_map(t_map_data *data)
 {
-	unsigned int	bloc_width;
-	unsigned int	bloc_height;
-	unsigned int	x;
-	unsigned int	y;
-	unsigned int	new_x;
-	unsigned int	new_y;
+	unsigned int	b_height;
+	unsigned int	b_width;
+	t_point			c;
+	t_point			point;
 
-	bloc_width = data->w_width / data->m_width / 2;
-	bloc_height = data->w_height / data->m_height / 2;
 
-	printf("[DrawMap]W=%d, H=%d\n", bloc_width, bloc_height);
-	x = 0;
-	y = 0;
-	while (y < data->m_height)
+	b_height = data->w_width / data->m_width / 2;
+	b_width = data->w_height / data->m_height / 2;
+	c.y = 0;
+	while (c.y < data->m_height)
 	{
-		x = 0;
-		while (x < data->m_width)
+		c.x = 0;
+		while (c.x < data->m_width)
 		{
-			//Draw pixel
-			//printf("[DrawMap]X=%d, Y=%d\n", x, y);
-			new_x = ((x * bloc_height) + data->w_width / 2) - y * bloc_width;
-			new_y = (((x * bloc_height + y * bloc_width) / tan(fdf_degree_to_radian(60))) + data->w_height / 2);
-			//new_y = (data->w_height / 2) + y * bloc_width;
-			//new_y = 
-			//printf("[DrawMap]X=%d, Y=%d\n", new_x, new_y);
-			if ((y == 0 && x == 1) || (y == 1 && x == 0))
-			{
-				printf("[X=%d][Y=%d]\n", x, y);
-				printf("[new_X=%d][new_Y=%d]\n", new_x, new_y);
-				printf("Angle:%lf\n",x * bloc_height / tan(fdf_degree_to_radian(60)));
-			}
-			fdf_mlx_set_pixel(data, new_x, new_y, fdf_get_hex_color(0, 255, 0, 0));
-			//fdf_mlx_set_pixel(data, (x * -1) + data->w_width / 2, ((x / tan(fdf_degree_to_radian(60)))) + data->w_height / 2, fdf_get_hex_color(0, 0, 255, 255));
-
-			//Connect to the lines
-			x++;
+			point.x = ((c.x * b_width) + data->w_width / 2) - c.y * b_height;
+			point.y = (((c.x * b_width + c.y * b_height)
+						/ tan(fdf_degree_to_radian(60))) + data->w_height / 2)
+				- data->map[c.y][c.x];
+			fdf_mlx_set_pixel(data, point.x, point.y,
+				fdf_get_hex_color(0, 255, 0, 0));
+			c.x++;
 		}
-		y++;
+		c.y++;
 	}
+	fdf_draw_map_lines(data);
+}
+
+void	fdf_draw_map_lines(t_map_data *data)
+{
+	t_point	p1;
+	t_point	p2;
+	fdf_mlx_connect_points(data, p1, p2);
+}
+
+void	fdf_mlx_connect_points(t_map_data *data, t_point s1, t_point s2)
+{
+
 }

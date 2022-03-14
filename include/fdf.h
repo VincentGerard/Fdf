@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:06:34 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/06 18:40:13 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/14 16:10:28 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define FDF_H
 
 # include "stdio.h"
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}		t_point;
 
 typedef struct s_image
 {
@@ -27,12 +33,12 @@ typedef struct s_image
 typedef struct s_map_data
 {
 	int				**map;
+	t_point			**p_map;
 	unsigned int	m_width;
 	unsigned int	m_height;
 	void			*mlx;
 	void			*mlx_win;
 	t_image			*c_image;
-	t_image			*n_image;
 	int				w_width;
 	int				w_height;
 	char			*w_name;
