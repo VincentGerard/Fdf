@@ -94,7 +94,8 @@ void	fdf_draw_map(t_map_data *data)
 			//Draw pixel
 			//printf("[DrawMap]X=%d, Y=%d\n", x, y);
 			new_x = ((x * bloc_height) + data->w_width / 2) - y * bloc_width;
-			new_y = (((x * bloc_height) / tan(fdf_degree_to_radian(60))) + data->w_height / 2) + y * bloc_height;
+			new_y = (((x * bloc_height + y * bloc_width) / tan(fdf_degree_to_radian(60))) + data->w_height / 2);
+			//new_y = (data->w_height / 2) + y * bloc_width;
 			//new_y = 
 			//printf("[DrawMap]X=%d, Y=%d\n", new_x, new_y);
 			if ((y == 0 && x == 1) || (y == 1 && x == 0))
