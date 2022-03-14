@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:01:10 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/27 16:59:42 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/14 16:58:52 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,33 @@ int	**fdf_alloc_map(unsigned int width, unsigned int height)
 	return (map);
 }
 
-void	fdf_free_map(int **map, unsigned int height)
+t_point	**fdf_alloc_p_map(unsigned int width, unsigned int height)
+{
+	t_point			**map;
+	unsigned int	y;
+
+	map = (t_point **)malloc(sizeof(t_point *) * height);
+	if (map == NULL)
+	{
+		ft_printf("[Fdf_Alloc_P_Map]Malloc on map with height=%d, width=%d\n",
+			height, width);
+		return (NULL);
+	}
+	y = 0;
+	while (y < height)
+	{
+		map[y] = (t_point *)malloc(sizeof (t_point) * width);
+		if (map[y] == NULL)
+		{
+			ft_printf("[Fdf_Alloc_P_Map]Error of malloc on map[Y=%d]\n", y);
+			return (NULL);
+		}
+		y++;
+	}
+	return (map);
+}
+
+void	fdf_free_both_map(int **map, t_point **map2, unsigned int height)
 {
 	unsigned int	y;
 
@@ -101,9 +127,11 @@ void	fdf_free_map(int **map, unsigned int height)
 	while (y < height)
 	{
 		free(map[y]);
+		free(map2[y]);
 		y++;
 	}
 	free(map);
+	free(map2);
 }
 
 void	fdf_show_map(int **map, unsigned int width, unsigned int height)
