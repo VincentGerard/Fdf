@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:06:34 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/14 16:10:28 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:16:38 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_point
 {
 	int	x;
 	int	y;
+	int	z;
 }		t_point;
 
 typedef struct s_image

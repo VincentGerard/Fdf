@@ -33,7 +33,7 @@ void	fdf_draw_map_lines(t_map_data *d)
 	}
 }
 
-int fdf_mlx_sign(int dxy)
+int	fdf_mlx_sign(int dxy)
 {
     if(dxy<0) return -1; 
     else if(dxy>0) return 1; 
