@@ -1,4 +1,4 @@
-#.SILENT:
+.SILENT:
 NAME=fdf
 SRC_DIR:=./src
 OBJS_DIR:=./obj

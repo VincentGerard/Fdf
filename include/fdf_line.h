@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_image.h                                        :+:      :+:    :+:   */
+/*   fdf_line.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 17:11:52 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/27 17:11:52 by vgerard          ###   ########.fr       */
+/*   Created: 2022/03/17 08:40:42 by vgerard           #+#    #+#             */
+/*   Updated: 2022/03/17 08:40:42 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_IMAGE_H
-# define FDF_IMAGE_H
+#ifndef FDF_LINE_H
+# define FDF_LINE_H
 # include "fdf.h"
-# include "fdf_line.h"
 
-void	fdf_put_image(t_map_data *data);
+void	fdf_mlx_connect_points(t_map_data *data, t_point s1, t_point s2);
 
-void	fdf_draw_image(t_map_data *data);
+int		fdf_mlx_sign(int dxy);
 
-void	fdf_draw_lines(t_map_data *data);
-
-void	fdf_draw_map(t_map_data *data);
+void	fdf_draw_map_lines(t_map_data *data);
 
 #endif

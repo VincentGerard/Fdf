@@ -87,9 +87,12 @@ void	fdf_draw_map(t_map_data *d)
 		while (c.x < d->m_width)
 		{
 			point = &d->p_map[c.y][c.x];
-			point->x = ((c.x * b_width) + d->w_width / 2) - c.y * b_height;
+			point->x = ((c.x * b_width) + (d->w_width / 2)) - c.y * b_height;
 			point->y = (((c.x * b_width + c.y * b_height)
 						/ tan(fdf_degree_to_radian(60))) + d->w_height / 2)
+			// point->x = ((c.x * b_width) + d->w_width / 2) - c.y * b_height;
+			// point->y = (((c.x * b_width + c.y * b_height)
+						// tan(fdf_degree_to_radian(60))) + d->w_height / 2)
 				- d->map[c.y][c.x];
 			fdf_mlx_set_pixel(d, point->x, point->y,
 				fdf_get_hex_color(0, 255, 0, 0));
@@ -100,46 +103,3 @@ void	fdf_draw_map(t_map_data *d)
 	fdf_draw_map_lines(d);
 }
 
-void	fdf_draw_map_lines(t_map_data *d)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < d->m_height - 1)
-	{
-		x = 0;
-		while (x < d->m_width - 1)
-		{
-			fdf_mlx_connect_points(d, d->p_map[y][x], d->p_map[y][x + 1]);
-			fdf_mlx_connect_points(d, d->p_map[y][x], d->p_map[y + 1][x]);
-			x++;
-		}
-		y++;
-	}
-}
-
-void	fdf_mlx_connect_points(t_map_data *d, t_point s1, t_point s2)
-{
-	t_point p1;
-	t_point p2;
-	float	angle;
-
-	if (s1.x < s2.x)
-	{
-		p1.x = s1.x;
-		p2.x = s2.x;
-	}
-	else
-	{
-		p1.x = s2.x;
-		p2.x = s1.x
-	}
-
-	angle = (float)(s2.x - s1.x) / (float)(s2.y - s1.y);
-	if (angle < 0)
-	{
-		printf("[X1=%d][Y1=%d][X2=%d][Y2=%d]\n", s1.x, s1.y, s2.x, s2.y);
-	}
-	printf("Angle:%f\n", angle);
-}
