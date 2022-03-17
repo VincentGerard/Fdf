@@ -6,11 +6,12 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 11:40:11 by vgerard           #+#    #+#             */
-/*   Updated: 2022/01/11 10:50:32 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/17 15:13:22 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdio.h"
 
 char	**ft_free_res(char **res)
 {
@@ -85,12 +86,14 @@ char	**ft_split(char const *str, char separator)
 	if (str == NULL)
 		return (0);
 	nbr_words = ft_nbr_words(str, separator);
+	printf("[Split]NbrWords = %d\n", nbr_words);
 	res = (char **)malloc(sizeof(char *) * nbr_words + 1);
 	if (res == NULL)
 		return (NULL);
 	res[nbr_words] = NULL;
 	while (i < nbr_words)
 	{
+		printf("[Split]Loop %d\n", i);
 		temp_word = ft_get_word((char *)str, separator, i);
 		if (temp_word == NULL)
 			return (ft_free_res(res));

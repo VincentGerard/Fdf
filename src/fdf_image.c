@@ -86,14 +86,14 @@ void	fdf_draw_map(t_map_data *d)
 		c.x = 0;
 		while (c.x < d->m_width)
 		{
-			point = &d->p_map[c.y][c.x];
+			point = &d->map[c.y][c.x];
 			point->x = ((c.x * b_width) + (d->w_width / 2)) - c.y * b_height;
 			point->y = (((c.x * b_width + c.y * b_height)
 						/ tan(fdf_degree_to_radian(60))) + d->w_height / 2);
 			point->x = ((c.x * b_width) + d->w_width / 2) - c.y * b_height;
 			point->y = (((c.x * b_width + c.y * b_height)
 						/ tan(fdf_degree_to_radian(60))) + d->w_height / 2)
-				- d->map[c.y][c.x];
+				- d->map[c.y][c.x].z;
 			fdf_mlx_set_pixel(d, point->x, point->y,
 				fdf_get_hex_color(0, 255, 0, 0));
 			c.x++;

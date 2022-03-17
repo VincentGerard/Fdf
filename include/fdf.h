@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:06:34 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/17 14:16:38 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:43:18 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ typedef struct s_point
 	int	x;
 	int	y;
 	int	z;
+	int	r;
+	int	g;
+	int	b;
 }		t_point;
 
 typedef struct s_image
@@ -33,8 +36,7 @@ typedef struct s_image
 
 typedef struct s_map_data
 {
-	int				**map;
-	t_point			**p_map;
+	t_point			**map;
 	unsigned int	m_width;
 	unsigned int	m_height;
 	void			*mlx;

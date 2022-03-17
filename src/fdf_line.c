@@ -24,9 +24,9 @@ void	fdf_draw_map_lines(t_map_data *d)
 			p2.y = 10;
 
 			//fdf_mlx_connect_points(d, p2, p1);
-			fdf_mlx_connect_points(d, d->p_map[y][x], d->p_map[y][x + 1]);
+			fdf_mlx_connect_points(d, d->map[y][x], d->map[y][x + 1]);
 			if (y < d->m_height - 1)
-				fdf_mlx_connect_points(d, d->p_map[y][x], d->p_map[y + 1][x]);
+				fdf_mlx_connect_points(d, d->map[y][x], d->map[y + 1][x]);
 			x++;
 		}
 		y++;
@@ -42,46 +42,6 @@ int	fdf_mlx_sign(int dxy)
 
 void	fdf_mlx_connect_points(t_map_data *d, t_point s1, t_point s2)
 {
-	// int	delta_x;
-	// int	delta_y;
-	// int	x;
-	// int	y;
-	// int	p;
-	// int	x_max;
-
-	// if (s1.x < s2.x)
-	// {
-	// 	x = s1.x;
-	// 	x_max = s2.x;
-	// }
-	// else
-	// {
-	// 	x = s2.x;
-	// 	x_max = s1.x;
-	// }
-	// delta_x = x_max - x;
-	// delta_y = s2.y - s1.y;
-	// y = s1.y;
-	// p = 2 * delta_y - delta_x;
-	// printf("[S1X=%d][S1Y=%d][S2X=%d][S2Y=%d]\n", s1.x, s1.y, s2.x, s2.y);
-	// printf("[DX=%d][DY=%d]\n", delta_x, delta_y);
-	// printf("Line[P=%d][X=%d][XMAX=%d]\n",p, x, x_max);
-	// while (x < x_max)
-	// {
-	// 	printf("[X=%d][Y=%d]\n",x ,y);
-	// 	if (p >= 0)
-	// 	{
-	// 		fdf_mlx_set_pixel(d, x, y, fdf_get_hex_color(0, 255, 255, 0));
-	// 		y++;
-	// 		p = p + 2 * delta_y - 2 * delta_x;
-	// 	}
-	// 	else
-	// 	{
-	// 		fdf_mlx_set_pixel(d, x, y, fdf_get_hex_color(0, 255, 255, 0));
-	// 		p = p + 2 * delta_y;
-	// 	}
-	// 	x++;
-	// }
 	int Dx = s2.x - s1.x;
     int Dy = s2.y - s1.y;
 
@@ -115,7 +75,7 @@ void	fdf_mlx_connect_points(t_map_data *d, t_point s1, t_point s2)
         }
     }
     else
-    {   
+    {
         //# Main loop
         for(int I=0; I<D; I++)
         {    

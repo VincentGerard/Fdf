@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:01:10 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/17 14:16:13 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/17 15:11:24 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ unsigned int *width, unsigned int *height)
 	return (0);
 }
 
-int	fdf_load_map(int **map, const char *filename)
+int	fdf_load_map(t_point **map, const char *filename)
 {
 	int		fd;
 	char	*str;
@@ -57,6 +57,7 @@ int	fdf_load_map(int **map, const char *filename)
 	y = 0;
 	while (str != NULL)
 	{
+		printf("[Line]\n");
 		if (fdf_fill_map_row(map, str, y))
 			return (1);
 		free(str);
@@ -67,12 +68,12 @@ int	fdf_load_map(int **map, const char *filename)
 	return (0);
 }
 
-int	**fdf_alloc_map(unsigned int width, unsigned int height)
+t_point	**fdf_alloc_map(unsigned int width, unsigned int height)
 {
-	int				**map;
+	t_point			**map;
 	unsigned int	y;
 
-	map = (int **)malloc(sizeof(int *) * height);
+	map = (t_point **)malloc(sizeof(t_point *) * height);
 	if (map == NULL)
 	{
 		ft_printf("[Fdf_Alloc_Map]Malloc on map with height=%d, width=%d\n",
@@ -82,7 +83,7 @@ int	**fdf_alloc_map(unsigned int width, unsigned int height)
 	y = 0;
 	while (y < height)
 	{
-		map[y] = (int *)malloc(sizeof (int) * width);
+		map[y] = (t_point *)malloc(sizeof (t_point) * width);
 		if (map[y] == NULL)
 		{
 			ft_printf("[Fdf_Alloc_Map]Error of malloc on map[Y=%d]\n", y);
@@ -93,33 +94,7 @@ int	**fdf_alloc_map(unsigned int width, unsigned int height)
 	return (map);
 }
 
-t_point	**fdf_alloc_p_map(unsigned int width, unsigned int height)
-{
-	t_point			**map;
-	unsigned int	y;
-
-	map = (t_point **)malloc(sizeof(t_point *) * height);
-	if (map == NULL)
-	{
-		ft_printf("[Fdf_Alloc_P_Map]Malloc on map with height=%d, width=%d\n",
-			height, width);
-		return (NULL);
-	}
-	y = 0;
-	while (y < height)
-	{
-		map[y] = (t_point *)malloc(sizeof (t_point) * width);
-		if (map[y] == NULL)
-		{
-			ft_printf("[Fdf_Alloc_P_Map]Error of malloc on map[Y=%d]\n", y);
-			return (NULL);
-		}
-		y++;
-	}
-	return (map);
-}
-
-void	fdf_free_both_map(int **map, t_point **map2, unsigned int height)
+void	fdf_free_map(t_point **map, unsigned int height)
 {
 	unsigned int	y;
 
@@ -127,14 +102,12 @@ void	fdf_free_both_map(int **map, t_point **map2, unsigned int height)
 	while (y < height)
 	{
 		free(map[y]);
-		free(map2[y]);
 		y++;
 	}
 	free(map);
-	free(map2);
 }
 
-void	fdf_show_map(int **map, unsigned int width, unsigned int height)
+void	fdf_show_map(t_point **map, unsigned int width, unsigned int height)
 {
 	unsigned int	x;
 	unsigned int	y;
@@ -145,7 +118,7 @@ void	fdf_show_map(int **map, unsigned int width, unsigned int height)
 		x = 0;
 		while (x < width)
 		{
-			ft_printf("%d ", map[y][x]);
+			ft_printf("%d ", map[y][x].z);
 			x++;
 		}
 		ft_printf("\n");
