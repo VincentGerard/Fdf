@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:24:27 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/18 14:01:31 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/18 15:54:57 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,18 @@ int	fdf_fill_map_cell(t_point **map, char *str, int row, int x)
 			return (1);
 	}
 	else
-	{
-		map[row][x].x = 0;
-		map[row][x].y = 0;
-		map[row][x].z = ft_atoi(str);
-		map[row][x].r = 255;
-		map[row][x].g = 255;
-		map[row][x].b = 255;
-	}
+		fdf_fill_empty_cell(map, str, row, x);
 	return (0);
+}
+
+void	fdf_fill_empty_cell(t_point **map, char *str, int row, int x)
+{
+	map[row][x].x = 0;
+	map[row][x].y = 0;
+	map[row][x].z = ft_atoi(str);
+	map[row][x].r = 255;
+	map[row][x].g = 255;
+	map[row][x].b = 255;
 }
 
 int	fdf_fill_map_row(t_point **map, char *str, int row)
@@ -110,7 +113,6 @@ void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		free(data->c_image);
 		free(data->mlx);
-		//system("leaks fdf");
 		exit(0);
 	}
 }

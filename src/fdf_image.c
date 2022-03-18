@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 17:11:51 by vgerard           #+#    #+#             */
-/*   Updated: 2022/02/27 17:11:51 by vgerard          ###   ########.fr       */
+/*   Created: 2022/03/18 15:52:52 by vgerard           #+#    #+#             */
+/*   Updated: 2022/03/18 15:52:52 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,26 @@
 
 void	fdf_put_image(t_map_data *d)
 {
+	int		x;
+	int		y;
+	t_point	*point;
+
 	fdf_draw_axes(d);
-	fdf_draw_map(d);
-	fdf_mlx_set_pixel(d, point->x, point->y, fdf_get_hex_color(0,point->r, point->g, point->b));
+	fdf_map_calc_pixel(d);
 
-
+	y = 0;
+	while (y < d->m_height)
+	{
+		x = 0;
+		while (x < d->m_width)
+		{
+			point = &d->map[y][x];
+			fdf_mlx_set_pixel(d, point->x, point->y,
+				fdf_get_hex_color(0, point->r, point->g, point->b));
+			x++;
+		}
+		y++;
+	}
 	fdf_draw_map_lines(d);
 	mlx_put_image_to_window(d->mlx, d->mlx_win,
 		d->c_image->image, 0, 0);
@@ -68,7 +83,7 @@ void	fdf_draw_axes(t_map_data *d)
 	}
 }
 
-void	fdf_draw_map(t_map_data *d)
+void	fdf_map_calc_pixel(t_map_data *d)
 {
 	unsigned int	cell_offset;
 	t_point			c;
