@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:24:27 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/17 15:11:29 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/18 14:01:31 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,48 @@
 #include <math.h>
 #include <unistd.h>
 
+int	fdf_fill_map_cell(t_point **map, char *str, int row, int x)
+{
+	int		color;
+	char	**temp2;
+
+	if (ft_strchr(str, ','))
+	{
+		temp2 = ft_split(str, ',');
+		if (temp2 != NULL && temp2[0] != NULL && temp2[1] != NULL)
+		{
+			map[row][x].z = ft_atoi(temp2[0]);
+			color = ft_atoi(temp2[1] + 2);
+			map[row][x].r = color / 10000;
+			color = color - (map[row][x].r * 10000);
+			map[row][x].g = color / 100;
+			color = color - (map[row][x].g * 100);
+			map[row][x].b = color;
+			free(temp2[0]);
+			free(temp2[1]);
+			free(temp2);
+		}
+		else
+			return (1);
+	}
+	else
+	{
+		map[row][x].x = 0;
+		map[row][x].y = 0;
+		map[row][x].z = ft_atoi(str);
+		map[row][x].r = 255;
+		map[row][x].g = 255;
+		map[row][x].b = 255;
+	}
+	return (0);
+}
+
 int	fdf_fill_map_row(t_point **map, char *str, int row)
 {
 	char	**temp;
 	int		x;
 
 	temp = ft_split(str, ' ');
-	printf("[Fill]Split Ok\n");
 	if (temp == NULL)
 	{
 		ft_printf("[Fdf_Fill_Map_Row]Split error\n");
@@ -33,12 +68,8 @@ int	fdf_fill_map_row(t_point **map, char *str, int row)
 	x = 0;
 	while (temp[x] != NULL)
 	{
-		printf("[Fill]String:%s\n", temp[x]);
-		if (ft_strchr(temp[x], ','))
-			printf("Coucou\n");
-		map[row][x].x = 0;
-		map[row][x].y = 0;
-		map[row][x].z = ft_atoi(temp[x]);
+		if (fdf_fill_map_cell(map, temp[x], row, x) == 1)
+			return (1);
 		free(temp[x]);
 		x++;
 	}
@@ -54,8 +85,8 @@ void	fdf_init_empty_map_data(t_map_data *data)
 	data->mlx = NULL;
 	data->mlx_win = NULL;
 	data->c_image = NULL;
-	data->w_width = 720;
-	data->w_height = 360;
+	data->w_width = 1920;
+	data->w_height = 1080;
 	data->w_name = "Fdf";
 }
 
@@ -79,7 +110,7 @@ void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		free(data->c_image);
 		free(data->mlx);
-		system("leaks fdf");
+		//system("leaks fdf");
 		exit(0);
 	}
 }

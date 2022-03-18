@@ -13,18 +13,10 @@ void	fdf_draw_map_lines(t_map_data *d)
 	while (y < d->m_height)
 	{
 		x = 0;
-		while (x < d->m_width - 1)
+		while (x < d->m_width)
 		{
-			t_point p1;
-			t_point p2;
-
-			p1.x = 0;
-			p1.y = 0;
-			p2.x = 10;
-			p2.y = 10;
-
-			//fdf_mlx_connect_points(d, p2, p1);
-			fdf_mlx_connect_points(d, d->map[y][x], d->map[y][x + 1]);
+			if (x < d->m_width - 1)
+				fdf_mlx_connect_points(d, d->map[y][x], d->map[y][x + 1]);
 			if (y < d->m_height - 1)
 				fdf_mlx_connect_points(d, d->map[y][x], d->map[y + 1][x]);
 			x++;
@@ -64,7 +56,7 @@ void	fdf_mlx_connect_points(t_map_data *d, t_point s1, t_point s2)
         //# Main loop
         for(int I=0; I<D; I++)
         {   
-        	fdf_mlx_set_pixel(d, X, Y, fdf_get_hex_color(0, 255, 255, 0));
+        	fdf_mlx_set_pixel(d, X, Y, fdf_get_hex_color(0, s1.r, s1.g, s1.b));
             //# Update (X, Y) and R
             X+= Sx; R+= Dy; //# Lateral move
             if (R >= Dx)
@@ -79,7 +71,7 @@ void	fdf_mlx_connect_points(t_map_data *d, t_point s1, t_point s2)
         //# Main loop
         for(int I=0; I<D; I++)
         {    
-            fdf_mlx_set_pixel(d, X, Y, fdf_get_hex_color(0, 255, 255, 0));
+            fdf_mlx_set_pixel(d, X, Y, fdf_get_hex_color(0, s1.r, s1.r, s1.b));
             //# Update (X, Y) and R
             Y+= Sy; 
             R+= Dx; //# Lateral move

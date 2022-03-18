@@ -20,20 +20,17 @@
 
 void	fdf_put_image(t_map_data *d)
 {
-	fdf_draw_image(d);
+	fdf_draw_axes(d);
+	fdf_draw_map(d);
+	fdf_mlx_set_pixel(d, point->x, point->y, fdf_get_hex_color(0,point->r, point->g, point->b));
+
+
+	fdf_draw_map_lines(d);
 	mlx_put_image_to_window(d->mlx, d->mlx_win,
 		d->c_image->image, 0, 0);
 }
 
-void	fdf_draw_image(t_map_data *d)
-{
-	fdf_draw_lines(d);
-	fdf_draw_map(d);
-	fdf_mlx_set_pixel(d, d->w_width / 2,
-		d->w_height / 2, fdf_get_hex_color(0, 255, 0, 0));
-}
-
-void	fdf_draw_lines(t_map_data *d)
+void	fdf_draw_axes(t_map_data *d)
 {
 	int	x;
 	int	y;
@@ -73,13 +70,11 @@ void	fdf_draw_lines(t_map_data *d)
 
 void	fdf_draw_map(t_map_data *d)
 {
-	unsigned int	b_height;
-	unsigned int	b_width;
+	unsigned int	cell_offset;
 	t_point			c;
 	t_point			*point;
 
-	b_height = d->w_width / d->m_width / 2;
-	b_width = d->w_height / d->m_height / 2;
+	cell_offset = d->w_height / d->m_height / 2;
 	c.y = 0;
 	while (c.y < d->m_height)
 	{
@@ -87,19 +82,12 @@ void	fdf_draw_map(t_map_data *d)
 		while (c.x < d->m_width)
 		{
 			point = &d->map[c.y][c.x];
-			point->x = ((c.x * b_width) + (d->w_width / 2)) - c.y * b_height;
-			point->y = (((c.x * b_width + c.y * b_height)
-						/ tan(fdf_degree_to_radian(60))) + d->w_height / 2);
-			point->x = ((c.x * b_width) + d->w_width / 2) - c.y * b_height;
-			point->y = (((c.x * b_width + c.y * b_height)
-						/ tan(fdf_degree_to_radian(60))) + d->w_height / 2)
+			point->x = (c.x * cell_offset) - c.y * cell_offset;
+			point->y = (((c.x * cell_offset + c.y * cell_offset)
+						/ tan(fdf_degree_to_radian(60))))
 				- d->map[c.y][c.x].z;
-			fdf_mlx_set_pixel(d, point->x, point->y,
-				fdf_get_hex_color(0, 255, 0, 0));
 			c.x++;
 		}
 		c.y++;
 	}
-	fdf_draw_map_lines(d);
 }
-

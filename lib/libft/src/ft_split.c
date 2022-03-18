@@ -6,27 +6,12 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 11:40:11 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/17 15:13:22 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/18 10:23:47 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "stdio.h"
-
-char	**ft_free_res(char **res)
-{
-	int	i;
-
-	i = 0;
-	while (res[i])
-	{
-		if (res[i] != NULL)
-			free(res[i]);
-		i++;
-	}
-	free(res);
-	return (NULL);
-}
 
 int	ft_nbr_words(const char *str, char separator)
 {
@@ -49,56 +34,64 @@ int	ft_nbr_words(const char *str, char separator)
 	return (nbr);
 }
 
-char	*ft_get_word(char *str, char separator, int n)
+static int	count_words(const char *str, char c)
 {
-	int		i;
-	int		j;
-	int		nbr;
-
-	nbr = 0;
-	i = -1;
-	while (i++ < (int)ft_strlen(str))
-	{
-		if (str[i] != separator && str[i] != '\0' && nbr == n)
-		{
-			j = 0;
-			while (str[i + j] != separator && str[i + j] != '\0')
-			{
-				j++;
-			}
-			return (ft_substr(str, i, j));
-		}
-		if (str[i] != separator && (i + 1) <= (int)ft_strlen(str)
-			&& (str[i + 1] == separator || str[i + 1] == '\0'))
-			nbr++;
-	}
-	return (NULL);
-}
-
-char	**ft_split(char const *str, char separator)
-{
-	char	**res;
-	int		nbr_words;
-	int		i;
-	char	*temp_word;
+	int	i;
+	int	trigger;
 
 	i = 0;
-	if (str == NULL)
-		return (0);
-	nbr_words = ft_nbr_words(str, separator);
-	printf("[Split]NbrWords = %d\n", nbr_words);
-	res = (char **)malloc(sizeof(char *) * nbr_words + 1);
-	if (res == NULL)
-		return (NULL);
-	res[nbr_words] = NULL;
-	while (i < nbr_words)
+	trigger = 0;
+	while (*str)
 	{
-		printf("[Split]Loop %d\n", i);
-		temp_word = ft_get_word((char *)str, separator, i);
-		if (temp_word == NULL)
-			return (ft_free_res(res));
-		res[i] = temp_word;
+		if (*str != c && trigger == 0)
+		{
+			trigger = 1;
+			i++;
+		}
+		else if (*str == c)
+			trigger = 0;
+		str++;
+	}
+	return (i);
+}
+
+static char	*word_dup(const char *str, int start, int finish)
+{
+	char	*word;
+	int		i;
+
+	i = 0;
+	word = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	int		index;
+	char	**split;
+
+	split = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!s || !split)
+		return (0);
+	i = 0;
+	j = 0;
+	index = -1;
+	while (i <= ft_strlen(s))
+	{
+		if (s[i] != c && index < 0)
+			index = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
+		{
+			split[j++] = word_dup(s, index, i);
+			index = -1;
+		}
 		i++;
 	}
-	return (res);
+	split[j] = 0;
+	return (split);
 }
