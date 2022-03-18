@@ -19,6 +19,8 @@ void	fdf_put_image(t_map_data *data);
 
 void	fdf_draw_axes(t_map_data *data);
 
+void	fdf_draw_map_pixels(t_map_data *d);
+
 void	fdf_map_calc_pixel(t_map_data *data);
 
 #endif

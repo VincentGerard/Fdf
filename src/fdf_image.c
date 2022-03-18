@@ -15,6 +15,7 @@
 #include "fdf_image.h"
 #include "fdf_map_utils_2.h"
 #include "fdf_mlx.h"
+#include "fdf_offset.h"
 #include "mlx.h"
 #include <math.h>
 
@@ -23,23 +24,13 @@ void	fdf_put_image(t_map_data *d)
 	int		x;
 	int		y;
 	t_point	*point;
+	t_point	offset;
 
 	fdf_draw_axes(d);
 	fdf_map_calc_pixel(d);
-
-	y = 0;
-	while (y < d->m_height)
-	{
-		x = 0;
-		while (x < d->m_width)
-		{
-			point = &d->map[y][x];
-			fdf_mlx_set_pixel(d, point->x, point->y,
-				fdf_get_hex_color(0, point->r, point->g, point->b));
-			x++;
-		}
-		y++;
-	}
+	offset = fdf_map_calc_offset(d);
+	fdf_map_apply_offset(d, offset);
+	fdf_draw_map_pixels(d);
 	fdf_draw_map_lines(d);
 	mlx_put_image_to_window(d->mlx, d->mlx_win,
 		d->c_image->image, 0, 0);
@@ -80,6 +71,27 @@ void	fdf_draw_axes(t_map_data *d)
 		//printf("X=%dY=%d\n", x + d->w_width / 2, ((x / tan(fdf_degree_to_radian(60))) * -1) + d->w_height / 2);
 		fdf_mlx_set_pixel(d, (x * -1) + d->w_width / 2, ((x / tan(fdf_degree_to_radian(60)))) + d->w_height / 2, fdf_get_hex_color(0, 0, 0, 255));
 		x++;
+	}
+}
+
+void	fdf_draw_map_pixels(t_map_data *d)
+{
+	t_point	*point;
+	int		x;
+	int		y;
+
+	y = 0;
+	while (y < d->m_height)
+	{
+		x = 0;
+		while (x < d->m_width)
+		{
+			point = &d->map[y][x];
+			fdf_mlx_set_pixel(d, point->x, point->y,
+				fdf_get_hex_color(0, point->r, point->g, point->b));
+			x++;
+		}
+		y++;
 	}
 }
 
