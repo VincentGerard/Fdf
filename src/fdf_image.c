@@ -26,6 +26,14 @@ void	fdf_put_image(t_map_data *d)
 	t_point	*point;
 	t_point	offset;
 
+	if (d->mlx_win != NULL)
+	{
+		mlx_destroy_image(d->mlx, d->c_image->image);
+		d->c_image->image = mlx_new_image(d->mlx, d->w_width, d->w_height);
+		d->c_image->address = mlx_get_data_addr(d->c_image->image,
+				&(d->c_image->bits_per_pixel), &(d->c_image->line_length),
+				&(d->c_image->endian));
+	}
 	fdf_draw_axes(d);
 	fdf_map_calc_pixel(d);
 	offset = fdf_map_calc_offset(d);
@@ -49,7 +57,6 @@ void	fdf_draw_axes(t_map_data *d)
 		fdf_mlx_set_pixel(d, x, y, fdf_get_hex_color(0, 0, 0, 255));
 		y++;
 	}
-
 	x = 0;
 	y = 0;
 	angle = 60;
@@ -112,7 +119,7 @@ void	fdf_map_calc_pixel(t_map_data *d)
 			point->x = (c.x * cell_offset) - c.y * cell_offset;
 			point->y = (((c.x * cell_offset + c.y * cell_offset)
 						/ tan(fdf_degree_to_radian(60))))
-				- d->map[c.y][c.x].z;
+				- d->map[c.y][c.x].z * d->height_offset;
 			c.x++;
 		}
 		c.y++;

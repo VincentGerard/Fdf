@@ -35,8 +35,24 @@ int	fdf_event_on_expose(void *param)
 
 int	fdf_event_on_keypress(int keycode, void *param)
 {
+	t_map_data	*data;
+
+	data = (t_map_data *)param;
 	ft_printf("[Fdf_Event_On_Keypress] = %d\n", keycode);
 	if (keycode == KEY_ESCAPE)
 		fdf_free_and_exit((void *)param, EXIT_CODE_NORMAL);
+	else if (keycode == KEY_PLUS)
+	{
+		data->height_offset++;
+		fdf_put_image(data);
+	}
+	else if (keycode == KEY_MINUS)
+	{
+		if (data->height_offset > 0)
+		{
+			data->height_offset--;
+			fdf_put_image(data);
+		}
+	}
 	return (0);
 }

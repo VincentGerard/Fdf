@@ -71,7 +71,7 @@ void	fdf_mlx_connect_points(t_map_data *d, t_point s1, t_point s2)
         //# Main loop
         for(int I=0; I<D; I++)
         {    
-            fdf_mlx_set_pixel(d, X, Y, fdf_get_hex_color(0, s1.r, s1.r, s1.b));
+            fdf_mlx_set_pixel(d, X, Y, fdf_get_hex_color(0, s1.r, s1.g, s1.b));
             //# Update (X, Y) and R
             Y+= Sy; 
             R+= Dx; //# Lateral move

@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:24:27 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/18 15:54:57 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/22 11:17:51 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	fdf_init_empty_map_data(t_map_data *data)
 	data->w_width = 1920;
 	data->w_height = 1080;
 	data->w_name = "Fdf";
+	data->height_offset = 1;
 }
 
 int	fdf_get_hex_color(int transparence, int r, int g, int b)

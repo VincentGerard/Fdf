@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:06:34 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/17 14:43:18 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/22 11:21:02 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_map_data
 	int				w_width;
 	int				w_height;
 	char			*w_name;
+	unsigned int	height_offset;
 }					t_map_data;
 
 typedef enum MLX_EVENT
@@ -59,6 +60,9 @@ typedef enum MLX_EVENT
 typedef enum KEYS
 {
 	KEY_ESCAPE = 65307,
+	KEY_N = 0,
+	KEY_PLUS = 69,
+	KEY_MINUS = 78,
 }	t_KEYS;
 
 typedef enum EXIT_CODE
