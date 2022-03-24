@@ -26,14 +26,12 @@ void	fdf_put_image(t_map_data *d)
 	t_point	*point;
 	t_point	offset;
 
-	if (d->mlx_win != NULL)
-	{
-		mlx_destroy_image(d->mlx, d->c_image->image);
-		d->c_image->image = mlx_new_image(d->mlx, d->w_width, d->w_height);
-		d->c_image->address = mlx_get_data_addr(d->c_image->image,
-				&(d->c_image->bits_per_pixel), &(d->c_image->line_length),
-				&(d->c_image->endian));
-	}
+	mlx_destroy_image(d->mlx, d->c_image->image);
+	//free(d->c_image);
+	d->c_image->image = mlx_new_image(d->mlx, d->w_width, d->w_height);
+	d->c_image->address = mlx_get_data_addr(d->c_image->image,
+			&(d->c_image->bits_per_pixel), &(d->c_image->line_length),
+			&(d->c_image->endian));
 	fdf_draw_axes(d);
 	fdf_map_calc_pixel(d);
 	offset = fdf_map_calc_offset(d);

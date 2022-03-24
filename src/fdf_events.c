@@ -39,14 +39,14 @@ int	fdf_event_on_keypress(int keycode, void *param)
 
 	data = (t_map_data *)param;
 	ft_printf("[Fdf_Event_On_Keypress] = %d\n", keycode);
-	if (keycode == KEY_ESCAPE)
+	if (keycode == MAC_KEY_ESCAPE || keycode == WINDOWS_KEY_ESCAPE)
 		fdf_free_and_exit((void *)param, EXIT_CODE_NORMAL);
-	else if (keycode == KEY_PLUS)
+	else if (keycode == MAC_KEY_PLUS || keycode == WINDOWS_KEY_PLUS)
 	{
 		data->height_offset++;
 		fdf_put_image(data);
 	}
-	else if (keycode == KEY_MINUS)
+	else if (keycode == MAC_KEY_MINUS || keycode == WINDOWS_KEY_MINUS)
 	{
 		if (data->height_offset > 0)
 		{

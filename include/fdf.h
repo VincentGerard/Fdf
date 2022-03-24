@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:06:34 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/22 11:21:02 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/24 17:22:50 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ typedef enum MLX_EVENT
 
 typedef enum KEYS
 {
-	KEY_ESCAPE = 65307,
-	KEY_N = 0,
-	KEY_PLUS = 69,
-	KEY_MINUS = 78,
+	MAC_KEY_ESCAPE = 53,
+	MAC_KEY_PLUS = 69,
+	MAC_KEY_MINUS = 78,
+	WINDOWS_KEY_ESCAPE = 65307,
+	WINDOWS_KEY_PLUS = 65451,
+	WINDOWS_KEY_MINUS = 65453,
 }	t_KEYS;
 
 typedef enum EXIT_CODE
