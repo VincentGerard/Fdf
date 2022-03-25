@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 03:24:27 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/22 12:18:21 by vgerard          ###   ########.fr       */
+/*   Created: 2022/03/25 14:04:26 by vgerard           #+#    #+#             */
+/*   Updated: 2022/03/25 14:38:28 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	fdf_fill_map_cell(t_point **map, char *str, int row, int x)
 		temp2 = ft_split(str, ',');
 		if (temp2 != NULL && temp2[0] != NULL && temp2[1] != NULL)
 		{
+			map[row][x].x = 0;
+			map[row][x].y = 0;
 			map[row][x].z = ft_atoi(temp2[0]);
 			color = ft_atoi(temp2[1] + 2);
 			map[row][x].r = color / 10000;
@@ -104,7 +106,7 @@ void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 	if (code == EXIT_CODE_MALLOC_FAIL)
 	{
 		fdf_free_map(data->map, data->m_height);
-		system("leaks fdf");
+		//system("leaks fdf");
 		exit(code);
 	}
 	else if (code == EXIT_CODE_NORMAL)
@@ -114,7 +116,7 @@ void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		free(data->c_image);
 		free(data->mlx);
-		system("leaks fdf");
+		//system("leaks fdf");
 		exit(0);
 	}
 }

@@ -115,9 +115,9 @@ void	fdf_map_calc_pixel(t_map_data *d)
 		{
 			point = &d->map[c.y][c.x];
 			point->x = (c.x * cell_offset) - c.y * cell_offset;
-			point->y = (((c.x * cell_offset + c.y * cell_offset)
+			point->y = (int)(((c.x * cell_offset + c.y * cell_offset)
 						/ tan(fdf_degree_to_radian(60))))
-				- d->map[c.y][c.x].z * d->height_offset;
+				- (d->map[c.y][c.x].z * d->height_offset);
 			c.x++;
 		}
 		c.y++;

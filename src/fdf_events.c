@@ -30,6 +30,7 @@ int	fdf_event_on_expose(void *param)
 {
 	ft_printf("[Fdf_Event_On_Expose]\n");
 	fdf_put_image((t_map_data *)param);
+	ft_printf("[Fdf_Event_On_Expose]Image Done\n");
 	return (0);
 }
 
