@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:01:10 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/18 11:08:17 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/25 15:18:37 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	fdf_load_map(t_point **map, const char *filename)
 	y = 0;
 	while (str != NULL)
 	{
-		//printf("[Line]Y= %d\n", y);
 		if (fdf_fill_map_row(map, str, y))
 			return (1);
 		free(str);

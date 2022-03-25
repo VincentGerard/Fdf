@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_line.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/25 15:19:12 by vgerard           #+#    #+#             */
+/*   Updated: 2022/03/25 15:19:12 by vgerard          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf_line.h"
 #include "fdf_mlx.h"
 #include "fdf_map_utils_2.h"
@@ -27,9 +39,12 @@ void	fdf_draw_map_lines(t_map_data *d)
 
 int	fdf_mlx_sign(int dxy)
 {
-    if(dxy<0) return -1; 
-    else if(dxy>0) return 1; 
-    else return 0;
+	if (dxy < 0)
+		return (-1);
+	else if (dxy > 0)
+		return (1);
+	else
+		return (0);
 }
 
 void	fdf_mlx_connect_points(t_map_data *d, t_point s1, t_point s2)

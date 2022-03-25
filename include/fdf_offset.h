@@ -6,14 +6,13 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 17:12:22 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/18 17:14:16 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/25 15:16:01 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_OFFSET_H
 # define FDF_OFFSET_H
-#include "fdf.h"
-
+# include "fdf.h"
 
 t_point	fdf_map_calc_offset(t_map_data *d);
 

@@ -27,12 +27,10 @@ void	fdf_put_image(t_map_data *d)
 	t_point	offset;
 
 	mlx_destroy_image(d->mlx, d->c_image->image);
-	//free(d->c_image);
 	d->c_image->image = mlx_new_image(d->mlx, d->w_width, d->w_height);
 	d->c_image->address = mlx_get_data_addr(d->c_image->image,
 			&(d->c_image->bits_per_pixel), &(d->c_image->line_length),
 			&(d->c_image->endian));
-	fdf_draw_axes(d);
 	fdf_map_calc_pixel(d);
 	offset = fdf_map_calc_offset(d);
 	fdf_map_apply_offset(d, offset);
@@ -40,43 +38,6 @@ void	fdf_put_image(t_map_data *d)
 	fdf_draw_map_lines(d);
 	mlx_put_image_to_window(d->mlx, d->mlx_win,
 		d->c_image->image, 0, 0);
-}
-
-void	fdf_draw_axes(t_map_data *d)
-{
-	int	x;
-	int	y;
-	int	angle;
-
-	x = d->w_width / 2;
-	y = 0;
-	while (y <= d->w_height / 2)
-	{
-		fdf_mlx_set_pixel(d, x, y, fdf_get_hex_color(0, 0, 0, 255));
-		y++;
-	}
-	x = 0;
-	y = 0;
-	angle = 60;
-	while ((int)((x) / tan(fdf_degree_to_radian(angle)) + d->w_height / 2) < d->w_height)
-	{
-		fdf_mlx_set_pixel(d, x + d->w_width / 2, (int)((x) / tan(fdf_degree_to_radian(angle)) + d->w_height / 2), fdf_get_hex_color(0, 0, 0, 255));
-		x++;
-		y++;
-	}
-
-	//Left
-	x = 0;
-	y = 0;
-	angle = 60;
-	while (x < d->w_width / 2)
-	{
-		//Calculate new x and y
-		//printf("X=%dY=%d\n", x, y);
-		//printf("X=%dY=%d\n", x + d->w_width / 2, ((x / tan(fdf_degree_to_radian(60))) * -1) + d->w_height / 2);
-		fdf_mlx_set_pixel(d, (x * -1) + d->w_width / 2, ((x / tan(fdf_degree_to_radian(60)))) + d->w_height / 2, fdf_get_hex_color(0, 0, 0, 255));
-		x++;
-	}
 }
 
 void	fdf_draw_map_pixels(t_map_data *d)

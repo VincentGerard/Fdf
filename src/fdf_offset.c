@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 17:11:34 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/20 14:31:58 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/25 15:17:04 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ t_point	fdf_map_calc_offset(t_map_data *d)
 
 	if (d->m_width > d->m_height)
 	{
-		offset.x = (d->w_width / 2) - (d->map[d->m_height / 2][d->m_width / 2].x);
-		offset.y = (d->w_height / 2) - (d->map[d->m_height / 2][d->m_width / 2].y);
+		offset.x = d->w_width / 2 - d->map[d->m_height / 2][d->m_width / 2].x;
+		offset.y = d->w_height / 2 - d->map[d->m_height / 2][d->m_width / 2].y;
 	}
 	else
 	{
-		offset.x = (d->w_width / 2) - (d->map[d->m_height / 2][d->m_width / 2].x);
-		offset.y = (d->w_height / 2) - (d->map[d->m_height / 2][d->m_width / 2].y);
+		offset.x = d->w_width / 2 - d->map[d->m_height / 2][d->m_width / 2].x;
+		offset.y = d->w_height / 2 - d->map[d->m_height / 2][d->m_width / 2].y;
 	}
 	return (offset);
 }

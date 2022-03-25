@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:04:26 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/25 14:38:28 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/25 15:18:01 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 	if (code == EXIT_CODE_MALLOC_FAIL)
 	{
 		fdf_free_map(data->map, data->m_height);
-		//system("leaks fdf");
 		exit(code);
 	}
 	else if (code == EXIT_CODE_NORMAL)
@@ -116,7 +115,6 @@ void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		free(data->c_image);
 		free(data->mlx);
-		//system("leaks fdf");
 		exit(0);
 	}
 }
