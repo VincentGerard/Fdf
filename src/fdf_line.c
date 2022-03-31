@@ -50,52 +50,64 @@ int	fdf_mlx_sign(int dxy)
 
 void	fdf_mlx_connect_points(t_map_data *d, t_point s1, t_point s2)
 {
-	int Dx = s2.x - s1.x;
-    int Dy = s2.y - s1.y;
+	t_line	line;
 
-    //# Increments
-    int Sx = fdf_mlx_sign(Dx); 
-    int Sy = fdf_mlx_sign(Dy);
+	line.dx = s2.x - s1.x;
+	line.dy = s2.y - s1.y;
+	line.sx = fdf_mlx_sign(line.dx);
+	line.sy = fdf_mlx_sign(line.dy);
+	line.dx = abs(line.dx);
+	line.dy = abs(line.dy);
+	line.d = fmax(line.dx, line.dy);
+	line.r = line.d / 2;
+	line.x = s1.x;
+	line.y = s1.y;
+	if (line.dx > line.dy)
+	{
+		fdf_mlx_connect_points_x(line, d, s1, s2);
+	}
+	else
+	{
+		fdf_mlx_connect_points_y(line, d, s1, s2);
+	}
+}
 
-    //# Segment length
-    Dx = abs(Dx); 
-    Dy = abs(Dy); 
-    int D = fmax(Dx, Dy);
+void	fdf_mlx_connect_points_x(t_line l, t_map_data *d, t_point s, t_point s2)
+{
+	int	i;
 
-    //# Initial remainder
-    double R = D / 2;
+	i = 0;
+	while (i < l.d)
+	{
+		fdf_mlx_set_pixel(d, l.x, l.y,
+			fdf_get_hex_color(0, s.r, s.g, s.b));
+		l.x += l.sx;
+		l.r += l.dy;
+		if (l.r >= l.dx)
+		{
+			l.y += l.sy;
+			l.r -= l.dx;
+		}
+		i++;
+	}
+}
 
-    int X = s1.x;
-    int Y = s1.y;
-    if(Dx > Dy)
-    {   
-        //# Main loop
-        for(int I=0; I<D; I++)
-        {   
-        	fdf_mlx_set_pixel(d, X, Y, fdf_get_hex_color(0, s1.r, s1.g, s1.b));
-            //# Update (X, Y) and R
-            X+= Sx; R+= Dy; //# Lateral move
-            if (R >= Dx)
-            {
-                Y+= Sy; 
-                R-= Dx; //# Diagonal move
-            }
-        }
-    }
-    else
-    {
-        //# Main loop
-        for(int I=0; I<D; I++)
-        {    
-            fdf_mlx_set_pixel(d, X, Y, fdf_get_hex_color(0, s1.r, s1.g, s1.b));
-            //# Update (X, Y) and R
-            Y+= Sy; 
-            R+= Dx; //# Lateral move
-            if(R >= Dy)
-            {    
-                X+= Sx; 
-                R-= Dy; //# Diagonal move
-            }
-        }
-    }
+void	fdf_mlx_connect_points_y(t_line l, t_map_data *d, t_point s, t_point s2)
+{
+	int	i;
+
+	i = 0;
+	while (i < l.d)
+	{
+		fdf_mlx_set_pixel(d, l.x, l.y,
+			fdf_get_hex_color(0, s.r, s.g, s.b));
+		l.y += l.sy;
+		l.r += l.dx;
+		if (l.r >= l.dy)
+		{
+			l.x += l.sx;
+			l.r -= l.dy;
+		}
+		i++;
+	}
 }
