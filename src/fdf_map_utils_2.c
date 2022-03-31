@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:04:26 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/31 12:27:02 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/31 15:08:51 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,13 @@ void	fdf_fill_empty_cell(t_point **map, char *str, int row, int x)
 void	fdf_fill_cell(t_point *cell, char **str)
 {
 	int	color;
-
+	
 	cell->x = 0;
 	cell->y = 0;
 	cell->z = ft_atoi(str[0]);
-	color = ft_atoi(str[1] + 2);
-	cell->r = color / 10000;
-	color = color - (cell->r * 10000);
-	cell->g = color / 100;
-	color = color - (cell->g * 100);
-	cell->b = color;
+	cell->r = fdf_get_rbg_from_string(str[1] + 2, 'r');
+	cell->g = fdf_get_rbg_from_string(str[1] + 2, 'g');
+	cell->b = fdf_get_rbg_from_string(str[1] + 2, 'b');
 }
 
 int	fdf_fill_map_row(t_point **map, char *str, int row)
@@ -85,5 +82,16 @@ int	fdf_fill_map_row(t_point **map, char *str, int row)
 		x++;
 	}
 	free(temp);
+	return (0);
+}
+
+int	fdf_get_rbg_from_string(char *str, char selector)
+{
+	int	val;
+
+	val = ft_atoi_base(str, "0123456789ABCDEF");
+	printf("Val=%d\n", val);
+	printf("Selector=%c\n", selector);
+	printf("Str=%s\n", str);
 	return (0);
 }
