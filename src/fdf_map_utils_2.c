@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:04:26 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/25 15:18:01 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:27:02 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #include "fdf.h"
 #include "mlx.h"
 #include "fdf_map_utils_2.h"
+#include "fdf_map_utils_3.h"
 #include "fdf_map_utils.h"
-#include <math.h>
-#include <unistd.h>
 
 int	fdf_fill_map_cell(t_point **map, char *str, int row, int x)
 {
@@ -28,15 +27,7 @@ int	fdf_fill_map_cell(t_point **map, char *str, int row, int x)
 		temp2 = ft_split(str, ',');
 		if (temp2 != NULL && temp2[0] != NULL && temp2[1] != NULL)
 		{
-			map[row][x].x = 0;
-			map[row][x].y = 0;
-			map[row][x].z = ft_atoi(temp2[0]);
-			color = ft_atoi(temp2[1] + 2);
-			map[row][x].r = color / 10000;
-			color = color - (map[row][x].r * 10000);
-			map[row][x].g = color / 100;
-			color = color - (map[row][x].g * 100);
-			map[row][x].b = color;
+			fdf_fill_cell(&map[row][x], temp2);
 			free(temp2[0]);
 			free(temp2[1]);
 			free(temp2);
@@ -57,6 +48,21 @@ void	fdf_fill_empty_cell(t_point **map, char *str, int row, int x)
 	map[row][x].r = 255;
 	map[row][x].g = 255;
 	map[row][x].b = 255;
+}
+
+void	fdf_fill_cell(t_point *cell, char **str)
+{
+	int	color;
+
+	cell->x = 0;
+	cell->y = 0;
+	cell->z = ft_atoi(str[0]);
+	color = ft_atoi(str[1] + 2);
+	cell->r = color / 10000;
+	color = color - (cell->r * 10000);
+	cell->g = color / 100;
+	color = color - (cell->g * 100);
+	cell->b = color;
 }
 
 int	fdf_fill_map_row(t_point **map, char *str, int row)
@@ -80,46 +86,4 @@ int	fdf_fill_map_row(t_point **map, char *str, int row)
 	}
 	free(temp);
 	return (0);
-}
-
-void	fdf_init_empty_map_data(t_map_data *data)
-{
-	data->map = NULL;
-	data->m_width = 0;
-	data->m_height = 0;
-	data->mlx = NULL;
-	data->mlx_win = NULL;
-	data->c_image = NULL;
-	data->w_width = 1920;
-	data->w_height = 1080;
-	data->w_name = "Fdf";
-	data->height_offset = 1;
-}
-
-int	fdf_get_hex_color(int transparence, int r, int g, int b)
-{
-	return (transparence << 24 | r << 16 | g << 8 | b);
-}
-
-void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
-{
-	if (code == EXIT_CODE_MALLOC_FAIL)
-	{
-		fdf_free_map(data->map, data->m_height);
-		exit(code);
-	}
-	else if (code == EXIT_CODE_NORMAL)
-	{
-		fdf_free_map(data->map, data->m_height);
-		mlx_destroy_image(data->mlx, data->c_image->image);
-		mlx_destroy_window(data->mlx, data->mlx_win);
-		free(data->c_image);
-		free(data->mlx);
-		exit(0);
-	}
-}
-
-double	fdf_degree_to_radian(double degree)
-{
-	return (degree * (M_PI / 180.0));
 }

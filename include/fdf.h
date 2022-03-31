@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:06:34 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/24 17:22:50 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:22:47 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include "stdio.h"
+# include "stdlib.h"
 
 typedef struct s_point
 {

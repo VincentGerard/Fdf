@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_map_utils_2.h                                  :+:      :+:    :+:   */
+/*   fdf_map_utils_3.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 03:24:16 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/31 12:13:40 by vgerard          ###   ########.fr       */
+/*   Created: 2022/03/31 12:13:59 by vgerard           #+#    #+#             */
+/*   Updated: 2022/03/31 12:26:49 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_MAP_UTILS_2_H
-# define FDF_MAP_UTILS_2_H
+#ifndef FDF_MAP_UTILS_3_H
+# define FDF_MAP_UTILS_3_H
+# include "fdf.h"
+# include "mlx.h"
+# include "fdf_map_utils_2.h"
+# include "fdf_map_utils.h"
+# include <math.h>
+# include <unistd.h>
 
-int		fdf_fill_map_cell(t_point **map, char *str, int row, int x);
-void	fdf_fill_empty_cell(t_point **map, char *str, int row, int x);
-void	fdf_fill_cell(t_point *cell, char **str);
-int		fdf_fill_map_row(t_point **map, char *str, int row);
+void	fdf_init_empty_map_data(t_map_data *data);
+int		fdf_get_hex_color(int transparence, int r, int g, int b);
+void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code);
+double	fdf_degree_to_radian(double degree);
 
 #endif

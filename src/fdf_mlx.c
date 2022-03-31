@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:39:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/08 19:04:29 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:23:50 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "mlx.h"
 #include "fdf_mlx.h"
 #include "fdf_map_utils_2.h"
+#include "fdf_map_utils_3.h"
 #include "fdf_hook.h"
 #include "fdf_image.h"
 

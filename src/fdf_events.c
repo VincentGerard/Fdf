@@ -16,6 +16,7 @@
 #include "fdf_events.h"
 #include "fdf_map_utils.h"
 #include "fdf_map_utils_2.h"
+#include "fdf_map_utils_3.h"
 #include "mlx.h"
 #include "fdf_image.h"
 
@@ -28,9 +29,7 @@ int	fdf_event_on_destroy(void *param)
 
 int	fdf_event_on_expose(void *param)
 {
-	ft_printf("[Fdf_Event_On_Expose]\n");
 	fdf_put_image((t_map_data *)param);
-	ft_printf("[Fdf_Event_On_Expose]Image Done\n");
 	return (0);
 }
 
@@ -39,7 +38,6 @@ int	fdf_event_on_keypress(int keycode, void *param)
 	t_map_data	*data;
 
 	data = (t_map_data *)param;
-	ft_printf("[Fdf_Event_On_Keypress] = %d\n", keycode);
 	if (keycode == MAC_KEY_ESCAPE || keycode == WINDOWS_KEY_ESCAPE)
 		fdf_free_and_exit((void *)param, EXIT_CODE_NORMAL);
 	else if (keycode == MAC_KEY_PLUS || keycode == WINDOWS_KEY_PLUS)

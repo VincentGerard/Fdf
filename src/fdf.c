@@ -6,14 +6,14 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:36:16 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/25 15:28:42 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:22:01 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "fdf.h"
 #include "fdf_map_utils.h"
 #include "fdf_map_utils_2.h"
+#include "fdf_map_utils_3.h"
 #include "fdf_mlx.h"
 
 int	fdf(const char *filename)

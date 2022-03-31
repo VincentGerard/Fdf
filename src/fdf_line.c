@@ -13,6 +13,7 @@
 #include "fdf_line.h"
 #include "fdf_mlx.h"
 #include "fdf_map_utils_2.h"
+#include "fdf_map_utils_3.h"
 #include "math.h"
 #include "stdlib.h"
 

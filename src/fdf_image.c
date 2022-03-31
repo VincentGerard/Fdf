@@ -14,6 +14,7 @@
 #include "fdf.h"
 #include "fdf_image.h"
 #include "fdf_map_utils_2.h"
+#include "fdf_map_utils_3.h"
 #include "fdf_mlx.h"
 #include "fdf_offset.h"
 #include "mlx.h"
