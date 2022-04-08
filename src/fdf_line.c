@@ -75,14 +75,18 @@ void	fdf_mlx_connect_points(t_map_data *d, t_point s1, t_point s2)
 void	fdf_mlx_connect_points_x(t_line l, t_map_data *d, t_point s, t_point s2)
 {
 	int	i;
-
-	//s.r + ((s2.r - s.r) * (i / l.d))
+	int	r;
+	int	g;
+	int	b;
 
 	i = 0;
 	while (i < l.d)
 	{
+		r = fdf_get_color_gradient(s.r, s2.r, i, l.d);
+		g = fdf_get_color_gradient(s.g, s2.g, i, l.d);
+		b = fdf_get_color_gradient(s.b, s2.b, i, l.d);
 		fdf_mlx_set_pixel(d, l.x, l.y,
-			fdf_get_hex_color(0, s.r, s.g, s.b));
+			fdf_get_hex_color(0, r, g, b));
 		l.x += l.sx;
 		l.r += l.dy;
 		if (l.r >= l.dx)
@@ -97,12 +101,18 @@ void	fdf_mlx_connect_points_x(t_line l, t_map_data *d, t_point s, t_point s2)
 void	fdf_mlx_connect_points_y(t_line l, t_map_data *d, t_point s, t_point s2)
 {
 	int	i;
+	int	r;
+	int	g;
+	int	b;
 
 	i = 0;
 	while (i < l.d)
 	{
+		r = fdf_get_color_gradient(s.r, s2.r, i, l.d);
+		g = fdf_get_color_gradient(s.g, s2.g, i, l.d);
+		b = fdf_get_color_gradient(s.b, s2.b, i, l.d);
 		fdf_mlx_set_pixel(d, l.x, l.y,
-			fdf_get_hex_color(0, s.r, s.g, s.b));
+			fdf_get_hex_color(0, r, g, b));
 		l.y += l.sy;
 		l.r += l.dx;
 		if (l.r >= l.dy)

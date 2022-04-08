@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:16:32 by vgerard           #+#    #+#             */
-/*   Updated: 2022/04/08 16:09:18 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/04/08 17:18:06 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,14 @@ void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 double	fdf_degree_to_radian(double degree)
 {
 	return (degree * (M_PI / 180.0));
+}
+
+int		fdf_get_color_gradient(int c1, int c2, int index, int lenght)
+{
+	int	val;
+	if (c1 < c2)
+		val = c1 + ((c2 - c1) * (float)((float)index / (float)lenght));
+	else
+		val = c1 - ((c1 - c2) * (float)((float)index / (float)lenght));
+	return (val);
 }
