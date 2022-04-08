@@ -47,11 +47,8 @@ int	fdf_event_on_keypress(int keycode, void *param)
 	}
 	else if (keycode == MAC_KEY_MINUS || keycode == WINDOWS_KEY_MINUS)
 	{
-		if (data->height_offset > 0)
-		{
-			data->height_offset--;
-			fdf_put_image(data);
-		}
+		data->height_offset--;
+		fdf_put_image(data);
 	}
 	return (0);
 }

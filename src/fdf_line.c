@@ -76,6 +76,8 @@ void	fdf_mlx_connect_points_x(t_line l, t_map_data *d, t_point s, t_point s2)
 {
 	int	i;
 
+	//s.r + ((s2.r - s.r) * (i / l.d))
+
 	i = 0;
 	while (i < l.d)
 	{

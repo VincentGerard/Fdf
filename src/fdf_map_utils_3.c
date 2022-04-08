@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:16:32 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/31 15:00:35 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/04/08 16:09:18 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	fdf_free_and_exit(t_map_data *data, t_EXIT_CODE code)
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		free(data->c_image);
 		free(data->mlx);
+		//system("leaks fdf");
 		exit(0);
 	}
 }
