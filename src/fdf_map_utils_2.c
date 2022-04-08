@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:04:26 by vgerard           #+#    #+#             */
-/*   Updated: 2022/03/31 15:08:51 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/04/08 11:51:52 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	fdf_fill_empty_cell(t_point **map, char *str, int row, int x)
 void	fdf_fill_cell(t_point *cell, char **str)
 {
 	int	color;
-	
+
 	cell->x = 0;
 	cell->y = 0;
 	cell->z = ft_atoi(str[0]);
@@ -88,10 +88,45 @@ int	fdf_fill_map_row(t_point **map, char *str, int row)
 int	fdf_get_rbg_from_string(char *str, char selector)
 {
 	int	val;
+	int	len;
+	int	offset;
+	char	c;
+	char	c2;
 
-	val = ft_atoi_base(str, "0123456789ABCDEF");
-	printf("Val=%d\n", val);
-	printf("Selector=%c\n", selector);
+	/*
+	FF00FF
+	0000FF
+	AA1100
+	FF
+	00FF
+	*/
 	printf("Str=%s\n", str);
-	return (0);
+	len = (int)ft_strlen(str);
+	val = 0;
+	if (selector == 'r')
+		offset = 6;
+	else if (selector == 'g')
+		offset = 4;
+	else if (selector == 'b')
+		offset = 2;
+	else
+		return (-1);
+	c = str[len - offset];
+	c2 = str[len - offset] + 1;
+	if (c >= 65)
+		c -= 55;
+	if (c >= 48)
+		c -= 48;
+	if (c2 >= 65)
+		c2 -= 55;
+	if (c2 >= 48)
+		c2 -= 48;
+	printf("C=%d\n",c);
+	printf("C2=%d\n",c2);
+	val = (16 * c) + c2;
+
+	printf("Selector=%c\n", selector);
+	printf("Len=%d\n", (int)ft_strlen(str));
+	printf("Val=%d\n", val);
+	return (val);
 }
