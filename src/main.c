@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 03:42:03 by vgerard           #+#    #+#             */
-/*   Updated: 2022/04/08 16:08:09 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/04/19 10:32:50 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char const *argv[])
 	else
 	{
 		ft_printf("Fdf needs 2 args!!!\n");
-		char str[] = "FF00FF";
+		char str[] = "F";
 		printf("R=%d\n", fdf_get_rbg_from_string(str, 'r'));
 		printf("G=%d\n", fdf_get_rbg_from_string(str, 'g'));
 		printf("B=%d\n", fdf_get_rbg_from_string(str, 'b'));
