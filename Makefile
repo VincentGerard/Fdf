@@ -43,7 +43,7 @@ re: fclean fdf
 
 run: all
 	echo "Run=>"
-	./fdf maps/42.fdf
+	./fdf maps/42-color.fdf
 
 leak: all
 	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all ./fdf maps/test_maps/42.fdf

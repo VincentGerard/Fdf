@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:04:26 by vgerard           #+#    #+#             */
-/*   Updated: 2022/04/08 15:13:56 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/04/19 13:50:11 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,15 @@ int	fdf_fill_map_row(t_point **map, char *str, int row)
 
 int	fdf_get_rbg_from_string(char *str, char selector)
 {
-	int	val;
-	int	len;
-	int	offset;
+	int		val;
+	int		len;
+	int		offset;
 	char	c;
 	char	c2;
 
-	//printf("Str=%s\n", str);
 	len = (int)ft_strlen(str);
 	val = 0;
+	str = ft_str_to_upper(str);
 	if (selector == 'r')
 		offset = 6;
 	else if (selector == 'g')
@@ -106,6 +106,7 @@ int	fdf_get_rbg_from_string(char *str, char selector)
 		return (-1);
 	c = str[len - offset];
 	c2 = str[len - offset + 1];
+	printf("Str=%sVal=%3dC=%3dC2=%3dLen=%2dOffset=%2d\n", str, val, c, c2, len, offset);
 	if (c >= 65)
 		c -= 55;
 	if (c >= 48)
@@ -114,11 +115,7 @@ int	fdf_get_rbg_from_string(char *str, char selector)
 		c2 -= 55;
 	if (c2 >= 48)
 		c2 -= 48;
-	//printf("C=%d\n",c);
-	//printf("C2=%d\n",c2);
 	val = (16 * c) + c2;
-	//printf("Selector=%c\n", selector);
-	//printf("Len=%d\n", (int)ft_strlen(str));
-	//printf("Val=%d\n", val);
+	printf("Str=%sVal=%3dC=%3dC2=%3dLen=%2dOffset=%2d\n", str, val, c, c2, len, offset);
 	return (val);
 }
