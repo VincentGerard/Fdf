@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:04:26 by vgerard           #+#    #+#             */
-/*   Updated: 2022/09/02 10:16:24 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:47:14 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,6 @@ int	fdf_get_rbg_from_string(char *str, char selector)
 		offset = 2;
 	else
 		return (-1);
-	c = str[len - offset];
-	c2 = str[len - offset + 1];
 	c = fdf_convert_ascii_to_int(str[len - offset]);
 	c2 = fdf_convert_ascii_to_int(str[len - offset + 1]);
 	val = (16 * c) + c2;

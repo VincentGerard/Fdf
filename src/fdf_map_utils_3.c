@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:16:32 by vgerard           #+#    #+#             */
-/*   Updated: 2022/09/02 10:02:06 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:56:35 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	fdf_init_empty_map_data(t_map_data *data)
 	data->mlx = NULL;
 	data->mlx_win = NULL;
 	data->c_image = NULL;
-	data->w_width = 720;
-	data->w_height = 360;
+	data->w_width = 1920;
+	data->w_height = 1080;
 	data->w_name = "Fdf";
 	data->height_offset = 1;
 }
