@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_map_utils_2.h                                  :+:      :+:    :+:   */
+/*   fdf_map_utils_4.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 03:24:16 by vgerard           #+#    #+#             */
-/*   Updated: 2022/09/02 10:07:38 by vgerard          ###   ########.fr       */
+/*   Created: 2022/09/02 10:03:16 by vgerard           #+#    #+#             */
+/*   Updated: 2022/09/02 10:11:33 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_MAP_UTILS_2_H
-# define FDF_MAP_UTILS_2_H
+#ifndef FDF_MAP_UTILS_4_H
+# define FDF_MAP_UTILS_4_H
 
-int		fdf_fill_map_cell(t_point **map, char *str, int row, int x);
-void	fdf_fill_empty_cell(t_point **map, char *str, int row, int x);
-void	fdf_fill_cell(t_point *cell, char **str);
-int		fdf_fill_map_row(t_point **map, char *str, int row);
-int		fdf_get_rbg_from_string(char *str, char selector);
+char	*ft_str_to_upper(char *str);
+int		fdf_rgb_selectionable(char *str, char selector);
+int		fdf_convert_ascii_to_int(char character);
 
 #endif

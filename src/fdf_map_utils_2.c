@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 14:04:26 by vgerard           #+#    #+#             */
-/*   Updated: 2022/04/19 13:50:11 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:16:24 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "mlx.h"
 #include "fdf_map_utils_2.h"
 #include "fdf_map_utils_3.h"
+#include "fdf_map_utils_4.h"
 #include "fdf_map_utils.h"
 
 int	fdf_fill_map_cell(t_point **map, char *str, int row, int x)
@@ -96,6 +97,8 @@ int	fdf_get_rbg_from_string(char *str, char selector)
 	len = (int)ft_strlen(str);
 	val = 0;
 	str = ft_str_to_upper(str);
+	if (!fdf_rgb_selectionable(str, selector))
+		return (0);
 	if (selector == 'r')
 		offset = 6;
 	else if (selector == 'g')
@@ -106,16 +109,8 @@ int	fdf_get_rbg_from_string(char *str, char selector)
 		return (-1);
 	c = str[len - offset];
 	c2 = str[len - offset + 1];
-	printf("Str=%sVal=%3dC=%3dC2=%3dLen=%2dOffset=%2d\n", str, val, c, c2, len, offset);
-	if (c >= 65)
-		c -= 55;
-	if (c >= 48)
-		c -= 48;
-	if (c2 >= 65)
-		c2 -= 55;
-	if (c2 >= 48)
-		c2 -= 48;
+	c = fdf_convert_ascii_to_int(str[len - offset]);
+	c2 = fdf_convert_ascii_to_int(str[len - offset + 1]);
 	val = (16 * c) + c2;
-	printf("Str=%sVal=%3dC=%3dC2=%3dLen=%2dOffset=%2d\n", str, val, c, c2, len, offset);
 	return (val);
 }

@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 12:16:32 by vgerard           #+#    #+#             */
-/*   Updated: 2022/04/19 13:40:03 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/09/02 10:02:06 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,4 @@ int	fdf_get_color_gradient(int c1, int c2, int index, int lenght)
 	else
 		val = c1 - ((c1 - c2) * (float)((float)index / (float)lenght));
 	return (val);
-}
-
-char	*ft_str_to_upper(char *str)
-{
-	char	*start;
-
-	start = str;
-	while (*str != '\0')
-	{
-		if (*str >= 'a' && *str <= 'z')
-			*str -= 32;
-		str++;
-	}
-	return (start);
 }
