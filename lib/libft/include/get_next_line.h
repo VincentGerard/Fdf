@@ -6,7 +6,7 @@
 /*   By: vgerard <vgerard@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 11:34:37 by vgerard           #+#    #+#             */
-/*   Updated: 2022/01/20 12:09:14 by vgerard          ###   ########.fr       */
+/*   Updated: 2022/09/04 11:01:06 by vgerard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "unistd.h"
 # include "libft.h"
 
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 100
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
 char	*ft_get_buff_start(char *buff);
 char	*ft_get_buff_end(char *buff);

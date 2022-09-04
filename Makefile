@@ -49,4 +49,4 @@ leak: all
 	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all ./fdf maps/test_maps/42.fdf
 
 norme:
-	norminette $(SRC_DIR) $(INCLUDE_DIR)
+	norminette $(SRC_DIR) $(INCLUDE_DIR) lib/libft/src lib/libft/include
